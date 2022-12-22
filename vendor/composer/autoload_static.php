@@ -507,6 +507,7 @@ class ComposerStaticInit629dd12e894684670573d8fc83bae0e7
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\AdminAdvertisementController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminAdvertisementController.php',
         'App\\Http\\Controllers\\Admin\\AdminHomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminHomeController.php',
         'App\\Http\\Controllers\\Admin\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminLoginController.php',
         'App\\Http\\Controllers\\Admin\\AdminProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminProfileController.php',
@@ -526,6 +527,7 @@ class ComposerStaticInit629dd12e894684670573d8fc83bae0e7
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mail\\Websitemail' => __DIR__ . '/../..' . '/app/Mail/Websitemail.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
+        'App\\Models\\HomeAdvertisement' => __DIR__ . '/../..' . '/app/Models/HomeAdvertisement.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

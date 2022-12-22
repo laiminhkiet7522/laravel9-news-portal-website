@@ -27,3 +27,7 @@ Route::get('/admin/edit-profile',[AdminProfileController::class,'index'])->name(
 Route::post('/admin/edit-profile-submit',[AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
 
 Route::get('/admin/home-advertisement',[AdminAdvertisementController::class,'home_ad_show'])->name('admin_home_ad_show')->middleware('admin:admin');
+Route::post('/admin/home-advertisement-update',[AdminAdvertisementController::class, 'home_ad_update'])->name('admin_home_ad_update');
+
+Route::get('/admin/top-advertisement',[AdminAdvertisementController::class,'top_ad_show'])->name('admin_top_ad_show')->middleware('admin:admin');
+Route::post('/admin/top-advertisement-update',[AdminAdvertisementController::class, 'top_ad_update'])->name('admin_top_ad_update');
