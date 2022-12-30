@@ -31,3 +31,6 @@ Route::post('/admin/home-advertisement-update',[AdminAdvertisementController::cl
 
 Route::get('/admin/top-advertisement',[AdminAdvertisementController::class,'top_ad_show'])->name('admin_top_ad_show')->middleware('admin:admin');
 Route::post('/admin/top-advertisement-update',[AdminAdvertisementController::class, 'top_ad_update'])->name('admin_top_ad_update');
+
+
+Route::get('/admin/sidebar-advertisement-view',[AdminAdvertisementController::class,'sidebar_ad_show'])->name('admin_sidebar_ad_show')->middleware('admin:admin');
