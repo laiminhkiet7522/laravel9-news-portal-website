@@ -31,7 +31,6 @@
                                 <div class="card-body card-body-auth">
                                     <form method="POST" action="{{ route('admin_reset_password_submit') }}">
                                         @csrf
-
                                         <input type="hidden" name="token" value="{{ $token }}">
                                         <input type="hidden" name="email" value="{{ $email }}">
                                         <div class="form-group">

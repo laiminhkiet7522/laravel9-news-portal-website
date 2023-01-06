@@ -2,7 +2,7 @@
 
 @section('heading', 'Sidebar Advertisements')
 @section('button')
-<a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Add</a>
+    <a href="{{ route('admin_sidebar_ad_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add</a>
 @endsection
 
 @section('main_content')
@@ -23,28 +23,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>photo</td>
-                                        <td>url</td>
-                                        <td>location</td>
-                                        <td class="pt_10 pb_10">
-                                            <a href="" class="btn btn-primary">Edit</a>
-                                            <a href="" class="btn btn-danger"
-                                                onClick="return confirm('Are you sure?');">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>photo</td>
-                                        <td>url</td>
-                                        <td>location</td>
-                                        <td class="pt_10 pb_10">
-                                            <a href="" class="btn btn-primary">Edit</a>
-                                            <a href="" class="btn btn-danger"
-                                                onClick="return confirm('Are you sure?');">Delete</a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($sidebar_ad_data as $row)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td><img src="{{ asset('uploads/'.$row->sidebar_ad) }}" alt="" style="width:200px"></td>
+                                            <td>{{ $row->sidebar_ad_url }}</td>
+                                            <td>{{ $row->sidebar_ad_location }}</td>
+                                            <td class="pt_10 pb_10">
+                                                <a href="{{ route('admin_sidebar_ad_edit', $row->id) }}" class="btn btn-primary">Edit</a>
+                                                <a href="{{ route('admin_sidebar_ad_delete', $row->id) }}" class="btn btn-danger"
+                                                    onClick="return confirm('Are you sure?');">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
