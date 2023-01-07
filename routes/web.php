@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminAdvertisementController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\AboutController;
 
@@ -32,12 +33,16 @@ Route::post('/admin/home-advertisement-update',[AdminAdvertisementController::cl
 Route::get('/admin/top-advertisement',[AdminAdvertisementController::class,'top_ad_show'])->name('admin_top_ad_show')->middleware('admin:admin');
 Route::post('/admin/top-advertisement-update',[AdminAdvertisementController::class, 'top_ad_update'])->name('admin_top_ad_update');
 
-
 Route::get('/admin/sidebar-advertisement-view',[AdminAdvertisementController::class,'sidebar_ad_show'])->name('admin_sidebar_ad_show')->middleware('admin:admin');
 Route::get('/admin/sidebar-advertisement-create',[AdminAdvertisementController::class,'sidebar_ad_create'])->name('admin_sidebar_ad_create')->middleware('admin:admin');
 Route::post('/admin/sidebar-advertisement-store',[AdminAdvertisementController::class, 'sidebar_ad_store'])->name('admin_sidebar_ad_store');
-
 Route::get('/admin/sidebar-advertisement-edit/{id}',[AdminAdvertisementController::class,'sidebar_ad_edit'])->name('admin_sidebar_ad_edit')->middleware('admin:admin');
 Route::post('/admin/sidebar-advertisement-update/{id}',[AdminAdvertisementController::class, 'sidebar_ad_update'])->name('admin_sidebar_ad_update');
-
 Route::get('/admin/sidebar-advertisement-delete/{id}',[AdminAdvertisementController::class,'sidebar_ad_delete'])->name('admin_sidebar_ad_delete')->middleware('admin:admin');
+
+Route::get('/admin/category/show',[AdminCategoryController::class,'show'])->name('admin_category_show')->middleware('admin:admin');
+Route::get('/admin/category/create',[AdminCategoryController::class,'create'])->name('admin_category_create')->middleware('admin:admin');
+Route::post('/admin/category/store',[AdminCategoryController::class,'store'])->name('admin_category_store');
+Route::get('/admin/category/edit/{id}',[AdminCategoryController::class,'edit'])->name('admin_category_edit')->middleware('admin:admin');
+Route::post('/admin/category/update/{id}',[AdminCategoryController::class, 'update'])->name('admin_category_update');
+Route::get('/admin/category/delete/{id}',[AdminCategoryController::class,'delete'])->name('admin_category_delete')->middleware('admin:admin');

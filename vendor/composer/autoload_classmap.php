@@ -29,6 +29,7 @@ return array(
     'App\\Mail\\Websitemail' => $baseDir . '/app/Mail/Websitemail.php',
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\HomeAdvertisement' => $baseDir . '/app/Models/HomeAdvertisement.php',
+    'App\\Models\\SidebarAdvertisement' => $baseDir . '/app/Models/SidebarAdvertisement.php',
     'App\\Models\\TopAdvertisement' => $baseDir . '/app/Models/TopAdvertisement.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

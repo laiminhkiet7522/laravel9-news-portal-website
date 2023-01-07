@@ -528,6 +528,7 @@ class ComposerStaticInit629dd12e894684670573d8fc83bae0e7
         'App\\Mail\\Websitemail' => __DIR__ . '/../..' . '/app/Mail/Websitemail.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\HomeAdvertisement' => __DIR__ . '/../..' . '/app/Models/HomeAdvertisement.php',
+        'App\\Models\\SidebarAdvertisement' => __DIR__ . '/../..' . '/app/Models/SidebarAdvertisement.php',
         'App\\Models\\TopAdvertisement' => __DIR__ . '/../..' . '/app/Models/TopAdvertisement.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
