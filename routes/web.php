@@ -8,12 +8,15 @@ use App\Http\Controllers\Admin\AdminAdvertisementController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\AboutController;
+use App\Http\Controllers\Front\PostController;
 
 // Front End
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 // Admin
 Route::get('/admin/home',[AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
 Route::get('/admin/login',[AdminLoginController::class, 'index'])->name('admin_login');
@@ -63,3 +66,6 @@ Route::get('/admin/post/edit/{id}',[AdminPostController::class,'edit'])->name('a
 Route::post('/admin/post/update/{id}',[AdminPostController::class, 'update'])->name('admin_post_update');
 Route::get('/admin/post/delete/{id}',[AdminPostController::class,'delete'])->name('admin_post_delete')->middleware('admin:admin');
 Route::get('/admin/post/tag/delete/{id}/{id1}',[AdminPostController::class,'delete_tag'])->name('admin_post_delete_tag')->middleware('admin:admin');
+
+Route::get('/admin/setting',[AdminSettingController::class, 'index'])->name('admin_setting')->middleware('admin:admin');
+Route::post('/admin/setting/update',[AdminSettingController::class, 'update'])->name('admin_setting_update');
