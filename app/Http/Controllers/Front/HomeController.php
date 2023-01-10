@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index(){
         $home_ad_data = HomeAdvertisement::where('id',1)->first();
         $setting_data = Setting::where('id',1)->first();
-        $post_data = Post::orderBy('id','desc')->get();
+        $post_data = Post::with('rSubCategory')->orderBy('id','desc')->get();
         return view('front.home', compact('home_ad_data','setting_data','post_data'));
     }
 }
