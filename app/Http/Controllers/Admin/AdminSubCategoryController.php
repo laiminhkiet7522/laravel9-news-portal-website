@@ -25,6 +25,7 @@ class AdminSubCategoryController extends Controller
         $sub_category = new SubCategory();
         $sub_category->sub_category_name = $request->sub_category_name;
         $sub_category->show_on_menu = $request->show_on_menu;
+        $sub_category->show_on_home = $request->show_on_home;
         $sub_category->sub_category_order = $request->sub_category_order;
         $sub_category->category_id = $request->category_id;
         $sub_category->save();
@@ -45,6 +46,7 @@ class AdminSubCategoryController extends Controller
         $sub_category = SubCategory::where('id',$id)->first();
         $sub_category->sub_category_name = $request->sub_category_name;
         $sub_category->show_on_menu = $request->show_on_menu;
+        $sub_category->show_on_home = $request->show_on_home;
         $sub_category->sub_category_order = $request->sub_category_order;
         $sub_category->category_id = $request->category_id;
         $sub_category->update();

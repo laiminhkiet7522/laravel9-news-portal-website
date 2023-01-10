@@ -25,6 +25,13 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
+                                <label>Show on home</label>
+                                <select name="show_on_home" class="form-control">
+                                    <option value="Show" @if($sub_category_single->show_on_home == 'Show') selected @endif>Show</option>
+                                    <option value="Hide" @if($sub_category_single->show_on_home == 'Hide') selected @endif>Hide</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
                                 <label>Sub Category Order *</label>
                                 <input type="text" class="form-control" name="sub_category_order" value="{{ $sub_category_single->sub_category_order }}">
                             </div> 
