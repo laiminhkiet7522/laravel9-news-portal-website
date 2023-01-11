@@ -11,12 +11,14 @@ use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminPhotoController;
+use App\Http\Controllers\Admin\AdminVideoController;
 
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
 use App\Http\Controllers\Front\PhotoController;
+use App\Http\Controllers\Front\VideoController;
 
 // Front End
 Route::get('/',[HomeController::class,'index'])->name('home');
@@ -24,6 +26,7 @@ Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
+Route::get('/video-gallery',[VideoController::class,'index'])->name('video_gallery');
 
 // Admin
 Route::get('/admin/home',[AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
@@ -94,3 +97,11 @@ Route::post('/admin/photo/store',[AdminPhotoController::class,'store'])->name('a
 Route::get('/admin/photo/edit/{id}',[AdminPhotoController::class,'edit'])->name('admin_photo_edit')->middleware('admin:admin');
 Route::post('/admin/photo/update/{id}',[AdminPhotoController::class, 'update'])->name('admin_photo_update');
 Route::get('/admin/photo/delete/{id}',[AdminPhotoController::class,'delete'])->name('admin_photo_delete')->middleware('admin:admin');
+
+
+Route::get('/admin/video/show',[AdminVideoController::class,'show'])->name('admin_video_show')->middleware('admin:admin');
+Route::get('/admin/video/create',[AdminVideoController::class,'create'])->name('admin_video_create')->middleware('admin:admin');
+Route::post('/admin/video/store',[AdminVideoController::class,'store'])->name('admin_video_store');
+Route::get('/admin/video/edit/{id}',[AdminVideoController::class,'edit'])->name('admin_video_edit')->middleware('admin:admin');
+Route::post('/admin/video/update/{id}',[AdminVideoController::class, 'update'])->name('admin_video_update');
+Route::get('/admin/video/delete/{id}',[AdminVideoController::class,'delete'])->name('admin_video_delete')->middleware('admin:admin');
