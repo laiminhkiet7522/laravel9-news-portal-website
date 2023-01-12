@@ -45,10 +45,10 @@
                 <div class="col-md-6">
                     <ul class="right">
                         @if ($global_page_data->faq_status == 'Show')
-                        <li class="menu"><a href="{{ route('faq') }}">FAQ</a></li>
+                        <li class="menu"><a href="{{ route('faq') }}">{{ $global_page_data->faq_title }}</a></li>
                         @endif
                         @if ($global_page_data->about_status == 'Show')
-                        <li class="menu"><a href="{{ route('about') }}">About</a></li>
+                        <li class="menu"><a href="{{ route('about') }}">{{ $global_page_data->about_title }}</a></li>
                         @endif
                         <li class="menu"><a href="contact.html">Contact</a></li>
                         <li class="menu"><a href="login.html">Login</a></li>
@@ -114,8 +114,10 @@
                     <div class="item">
                         <h2 class="heading">Useful Links</h2>
                         <ul class="useful-links">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="terms.html">Terms and Conditions</a></li>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            @if ($global_page_data->terms_status == 'Show')
+                            <li><a href="{{ route('terms') }}">{{ $global_page_data->terms_title }}</a></li>
+                            @endif
                             <li><a href="privacy.html">Privacy Policy</a></li>
                             <li><a href="disclaimer.html">Disclaimer</a></li>
                             <li><a href="contact.html">Contact</a></li>

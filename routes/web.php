@@ -20,12 +20,14 @@ use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\SubCategoryController;
 use App\Http\Controllers\Front\PhotoController;
+use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 
 // Front End
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
+Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
