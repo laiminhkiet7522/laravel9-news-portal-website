@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminVideoController;
+use App\Http\Controllers\Admin\AdminPageController;
 
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\AboutController;
@@ -105,3 +106,7 @@ Route::post('/admin/video/store',[AdminVideoController::class,'store'])->name('a
 Route::get('/admin/video/edit/{id}',[AdminVideoController::class,'edit'])->name('admin_video_edit')->middleware('admin:admin');
 Route::post('/admin/video/update/{id}',[AdminVideoController::class, 'update'])->name('admin_video_update');
 Route::get('/admin/video/delete/{id}',[AdminVideoController::class,'delete'])->name('admin_video_delete')->middleware('admin:admin');
+
+
+Route::get('/admin/page/about',[AdminPageController::class,'about'])->name('admin_page_about')->middleware('admin:admin');
+Route::post('/admin/page/about/update',[AdminPageController::class, 'about_update'])->name('admin_page_about_update');
