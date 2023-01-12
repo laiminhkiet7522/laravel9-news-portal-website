@@ -67,7 +67,8 @@
                             FAQ</a></li>
                     <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
                             Contact</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
+                    <li class="{{ Request::is('admin/page/login') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin_page_login') }}"><i class="fas fa-angle-right"></i>
                             Login</a></li>
                     <li class="{{ Request::is('admin/page/terms') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin_page_terms') }}"><i class="fas fa-angle-right"></i>

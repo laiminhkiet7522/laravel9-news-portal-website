@@ -88,4 +88,18 @@ class AdminPageController extends Controller
         $page->update();
         return redirect()->route('admin_page_disclaimer')->with('success','Data is updated successfully!');
     }
+    public function login(){
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_login',compact('page_data'));
+    }
+    public function login_update(Request $request){
+        $request->validate([
+            'login_title'=>'required'
+        ]);
+        $page = Page::where('id',1)->first();
+        $page->login_title = $request->login_title;
+        $page->login_status = $request->login_status;
+        $page->update();
+        return redirect()->route('admin_page_login')->with('success','Data is updated successfully!');
+    }
 }

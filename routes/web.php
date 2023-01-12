@@ -24,6 +24,7 @@ use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Front\DisclaimerController;
+use App\Http\Controllers\Front\LoginController;
 
 // Front End
 Route::get('/',[HomeController::class,'index'])->name('home');
@@ -32,6 +33,7 @@ Route::get('/faq',[FaqController::class,'index'])->name('faq');
 Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
 Route::get('/privacy-policy',[PrivacyController::class,'index'])->name('privacy');
 Route::get('/disclaimer',[DisclaimerController::class,'index'])->name('disclaimer');
+Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
@@ -134,3 +136,7 @@ Route::post('/admin/page/privacy/update',[AdminPageController::class, 'privacy_u
 
 Route::get('/admin/page/disclaimer',[AdminPageController::class,'disclaimer'])->name('admin_page_disclaimer')->middleware('admin:admin');
 Route::post('/admin/page/disclaimer/update',[AdminPageController::class, 'disclaimer_update'])->name('admin_page_disclaimer_update');
+
+
+Route::get('/admin/page/login',[AdminPageController::class,'login'])->name('admin_page_login')->middleware('admin:admin');
+Route::post('/admin/page/login/update',[AdminPageController::class, 'login_update'])->name('admin_page_login_update');
