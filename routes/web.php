@@ -22,12 +22,14 @@ use App\Http\Controllers\Front\SubCategoryController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
+use App\Http\Controllers\Front\PrivacyController;
 
 // Front End
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
 Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
+Route::get('/privacy-policy',[PrivacyController::class,'index'])->name('privacy');
 Route::get('/news-detail/{id}',[PostController::class,'detail'])->name('news_detail');
 Route::get('/category/{id}',[SubCategoryController::class,'index'])->name('category');
 Route::get('/photo-gallery',[PhotoController::class,'index'])->name('photo_gallery');
@@ -122,3 +124,7 @@ Route::post('/admin/page/faq/update',[AdminPageController::class, 'faq_update'])
 
 Route::get('/admin/page/terms',[AdminPageController::class,'terms'])->name('admin_page_terms')->middleware('admin:admin');
 Route::post('/admin/page/terms/update',[AdminPageController::class, 'terms_update'])->name('admin_page_terms_update');
+
+
+Route::get('/admin/page/privacy',[AdminPageController::class,'privacy'])->name('admin_page_privacy')->middleware('admin:admin');
+Route::post('/admin/page/privacy/update',[AdminPageController::class, 'privacy_update'])->name('admin_page_privacy_update');

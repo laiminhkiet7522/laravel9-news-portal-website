@@ -56,4 +56,20 @@ class AdminPageController extends Controller
         $page->update();
         return redirect()->route('admin_page_terms')->with('success','Data is updated successfully!');
     }
+    public function privacy(){
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_privacy',compact('page_data'));
+    }
+    public function privacy_update(Request $request){
+        $request->validate([
+            'privacy_title'=>'required',
+            'privacy_detail'=>'required'
+        ]);
+        $page = Page::where('id',1)->first();
+        $page->privacy_title = $request->privacy_title;
+        $page->privacy_detail = $request->privacy_detail;
+        $page->privacy_status = $request->privacy_status;
+        $page->update();
+        return redirect()->route('admin_page_privacy')->with('success','Data is updated successfully!');
+    }
 }
