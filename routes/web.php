@@ -25,10 +25,13 @@ use App\Http\Controllers\Front\VideoController;
 use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Front\DisclaimerController;
 use App\Http\Controllers\Front\LoginController;
+use App\Http\Controllers\Front\ContactController;
 
 // Front End
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/contact',[ContactController::class,'index'])->name('contact');
+Route::post('/contact/send-email',[ContactController::class,'send_email'])->name('contact_form_submit');
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
 Route::get('/terms-and-conditions',[TermsController::class,'index'])->name('terms');
 Route::get('/privacy-policy',[PrivacyController::class,'index'])->name('privacy');
@@ -140,3 +143,7 @@ Route::post('/admin/page/disclaimer/update',[AdminPageController::class, 'discla
 
 Route::get('/admin/page/login',[AdminPageController::class,'login'])->name('admin_page_login')->middleware('admin:admin');
 Route::post('/admin/page/login/update',[AdminPageController::class, 'login_update'])->name('admin_page_login_update');
+
+
+Route::get('/admin/page/contact',[AdminPageController::class,'contact'])->name('admin_page_contact')->middleware('admin:admin');
+Route::post('/admin/page/contact/update',[AdminPageController::class, 'contact_update'])->name('admin_page_contact_update'); 

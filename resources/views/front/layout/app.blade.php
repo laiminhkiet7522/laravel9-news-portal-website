@@ -51,7 +51,11 @@
                             <li class="menu"><a href="{{ route('about') }}">{{ $global_page_data->about_title }}</a>
                             </li>
                         @endif
-                        <li class="menu"><a href="contact.html">Contact</a></li>
+                        @if ($global_page_data->contact_status == 'Show')
+                            <li class="menu"><a
+                                    href="{{ route('contact') }}">{{ $global_page_data->contact_title }}</a></li>
+                        @endif
+
                         @if ($global_page_data->login_status == 'Show')
                             <li class="menu"><a href="{{ route('login') }}">{{ $global_page_data->login_title }}</a>
                             </li>
@@ -128,10 +132,13 @@
                                 <li><a href="{{ route('privacy') }}">{{ $global_page_data->privacy_title }}</a></li>
                             @endif
                             @if ($global_page_data->disclaimer_status == 'Show')
-                            <li><a href="{{ route('disclaimer') }}">{{ $global_page_data->disclaimer_title }}</a></li>
+                                <li><a href="{{ route('disclaimer') }}">{{ $global_page_data->disclaimer_title }}</a>
+                                </li>
                             @endif
-                           
-                            <li><a href="contact.html">Contact</a></li>
+                            @if ($global_page_data->contact_status == 'Show')
+                                <li><a href="{{ route('contact') }}">{{ $global_page_data->contact_title }}</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
