@@ -20,15 +20,11 @@
     <div class="page-content">
         <div class="container">
             <div class="row">
-                @if ($page_data->about_status == 'Show')
                 <div class="col-md-12">
                     <p>
                         {!! $page_data->about_detail !!}
                     </p>
                 </div>
-                @else
-                <span class="text-danger">No data is found</span>
-                @endif
             </div>
         </div>
     </div>

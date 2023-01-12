@@ -62,13 +62,15 @@
                     <li class="{{ Request::is('admin/page/about') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin_page_about') }}"><i class="fas fa-angle-right"></i>
                             About</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
+                    <li class="{{ Request::is('admin/page/faq') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin_page_faq') }}"><i class="fas fa-angle-right"></i>
                             FAQ</a></li>
                     <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
                             Contact</a></li>
                     <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
                             Login</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
+                    <li class="{{ Request::is('admin/page/terms') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin_page_terms') }}"><i class="fas fa-angle-right"></i>
                             Terms and Conditions</a></li>
                     <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
                             Privacy Policy</a></li>
