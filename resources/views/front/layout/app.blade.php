@@ -124,7 +124,10 @@
                             @if ($global_page_data->privacy_status == 'Show')
                                 <li><a href="{{ route('privacy') }}">{{ $global_page_data->privacy_title }}</a></li>
                             @endif
-                            <li><a href="disclaimer.html">Disclaimer</a></li>
+                            @if ($global_page_data->disclaimer_status == 'Show')
+                            <li><a href="{{ route('disclaimer') }}">{{ $global_page_data->disclaimer_title }}</a></li>
+                            @endif
+                           
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>

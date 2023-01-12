@@ -72,4 +72,20 @@ class AdminPageController extends Controller
         $page->update();
         return redirect()->route('admin_page_privacy')->with('success','Data is updated successfully!');
     }
+    public function disclaimer(){
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_disclaimer',compact('page_data'));
+    }
+    public function disclaimer_update(Request $request){
+        $request->validate([
+            'disclaimer_title'=>'required',
+            'disclaimer_detail'=>'required'
+        ]);
+        $page = Page::where('id',1)->first();
+        $page->disclaimer_title = $request->disclaimer_title;
+        $page->disclaimer_detail = $request->disclaimer_detail;
+        $page->disclaimer_status = $request->disclaimer_status;
+        $page->update();
+        return redirect()->route('admin_page_disclaimer')->with('success','Data is updated successfully!');
+    }
 }

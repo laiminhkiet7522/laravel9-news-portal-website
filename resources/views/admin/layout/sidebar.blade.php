@@ -75,7 +75,8 @@
                     <li class="{{ Request::is('admin/page/privacy') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin_page_privacy') }}"><i class="fas fa-angle-right"></i>
                             Privacy Policy</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i>
+                    <li class="{{ Request::is('admin/page/disclaimer') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin_page_disclaimer') }}"><i class="fas fa-angle-right"></i>
                             Disclaimer</a></li>
                 </ul>
             </li>
