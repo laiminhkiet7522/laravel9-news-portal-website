@@ -82,6 +82,9 @@
                             Disclaimer</a></li>
                 </ul>
             </li>
+            <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}"><a class="nav-link"
+                    href="{{ route('admin_faq_show') }}"><i class="fas fa-hand-point-right"></i>
+                    <span>FAQ Section</span></a></li>
 
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown
