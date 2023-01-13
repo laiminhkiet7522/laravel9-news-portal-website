@@ -35,15 +35,22 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
-                                <label>Is Sharable</label>
+                                <label>Is Sharable?</label>
                                 <select name="is_share" class="form-control">
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
-                                <label>Is Comment</label>
+                                <label>Is Comment?</label>
                                 <select name="is_comment" class="form-control">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Want to send this to subscribers?</label>
+                                <select name="subscriber_send_option" class="form-control">
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                 </select>

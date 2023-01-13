@@ -9,6 +9,9 @@ use App\Models\Tag;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Websitemail;
+use App\Models\Subscriber;
+use Illuminate\Support\Facades\Mail;
 
 class AdminPostController extends Controller
 {
@@ -62,6 +65,20 @@ class AdminPostController extends Controller
                 $tag->post_id = $ai_id;
                 $tag->tag_name = trim($tag_array_new[$i]);
                 $tag->save();
+            }
+        }
+
+        //Sending this post to subscriber
+        if ($request->subscriber_send_option == 1) {
+            $subject = 'A new post is published';
+            $message = 'Hi, A new post is published into our website. Please go to see that post:<br>';
+            $message .= '<a target="_blank" href="' . route('news_detail', $ai_id) . '">';
+            $message .= $request->post_title;
+            $message .= '</a>';
+
+            $subscribers = Subscriber::where('status', 'Active')->get();
+            foreach ($subscribers as $row) {
+                Mail::to($row->email)->send(new Websitemail($subject, $message));
             }
         }
         return redirect()->route('admin_post_show')->with('success', 'Data is added successfully!');

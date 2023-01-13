@@ -29,8 +29,6 @@
                         @php
                             $i++;
                         @endphp
-                            @if ($loop->iteration == 1)
-                            @endif
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading{{ $i }}">
                                     <button class="accordion-button @if ($loop->iteration != 1) collapsed @endif " type="button" data-bs-toggle="collapse"

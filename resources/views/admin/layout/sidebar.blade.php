@@ -86,6 +86,19 @@
                     href="{{ route('admin_faq_show') }}"><i class="fas fa-hand-point-right"></i>
                     <span>FAQ Section</span></a></li>
 
+            <li class="nav-item dropdown {{ Request::is('admin/subscriber/*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-hand-point-right"></i><span>Subscribers</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/subscriber/all') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin_subscribers') }}"><i class="fas fa-angle-right"></i>
+                            All Subscribers</a></li>
+                    <li class="{{ Request::is('admin/subscriber/send-email') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin_subscribers_send_email') }}"><i class="fas fa-angle-right"></i>
+                            Send Email To All</a></li>
+                </ul>
+            </li>
+
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown
                         Items</span></a>
