@@ -99,6 +99,10 @@
                 </ul>
             </li>
 
+            <li class="{{ Request::is('admin/live-channel/*') ? 'active' : '' }}"><a class="nav-link"
+                    href="{{ route('admin_live_channel_show') }}"><i class="fas fa-hand-point-right"></i>
+                    <span>Live Channel</span></a></li>
+
             {{-- <li class="nav-item dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown
                         Items</span></a>
