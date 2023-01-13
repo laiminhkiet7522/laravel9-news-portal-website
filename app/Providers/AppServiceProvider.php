@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\Post;
 use App\Models\SidebarAdvertisement;
 use App\Models\TopAdvertisement;
 use App\Models\LiveChannel;
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         
         $top_ad_data = TopAdvertisement::where('id', 1)->first();
         $page_data = Page::where('id', 1)->first();
+        $recent_news_data = Post::with('rSubCategory')->orderBy('id','desc')->get();
+        $popular_news_data = Post::with('rSubCategory')->orderBy('visitors','desc')->get();
         $sidebar_top_ad = SidebarAdvertisement::where('sidebar_ad_location','Top')->get();
         $sidebar_bottom_ad = SidebarAdvertisement::where('sidebar_ad_location','Bottom')->get();
         $live_channel_data = LiveChannel::get();
@@ -43,5 +46,7 @@ class AppServiceProvider extends ServiceProvider
         view()->share('global_categories', $categories);
         view()->share('global_page_data', $page_data);
         view()->share('global_live_channel_data', $live_channel_data);
+        view()->share('global_recent_news_data', $recent_news_data);
+        view()->share('global_popular_news_data', $popular_news_data);
     }
 }
