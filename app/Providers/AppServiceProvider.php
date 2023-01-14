@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\OnlinePoll;
 use App\Models\SidebarAdvertisement;
 use App\Models\TopAdvertisement;
 use App\Models\LiveChannel;
@@ -39,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $sidebar_top_ad = SidebarAdvertisement::where('sidebar_ad_location','Top')->get();
         $sidebar_bottom_ad = SidebarAdvertisement::where('sidebar_ad_location','Bottom')->get();
         $live_channel_data = LiveChannel::get();
+        $online_poll_data = OnlinePoll::orderBy('id','desc')->first();
         $categories = Category::with('rSubCategory')->where('show_on_menu','Show')->orderBy('category_order','asc')->get();
         view()->share('global_top_ad_data', $top_ad_data);
         view()->share('global_sidebar_top_ad', $sidebar_top_ad);
@@ -48,5 +50,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('global_live_channel_data', $live_channel_data);
         view()->share('global_recent_news_data', $recent_news_data);
         view()->share('global_popular_news_data', $popular_news_data);
+        view()->share('global_online_poll_data', $online_poll_data);
     }
 }

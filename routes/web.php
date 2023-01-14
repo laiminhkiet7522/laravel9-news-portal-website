@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Admin\AdminLiveChannelController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminFaqController;
+use App\Http\Controllers\Admin\AdminOnlinePollController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 
 use App\Http\Controllers\Front\HomeController;
@@ -30,6 +31,7 @@ use App\Http\Controllers\Front\DisclaimerController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\SubscriberController;
+use App\Http\Controllers\Front\PollController;
 
 // Front End
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -46,8 +48,13 @@ Route::get('/category/{id}', [SubCategoryController::class, 'index'])->name('cat
 Route::get('/photo-gallery', [PhotoController::class, 'index'])->name('photo_gallery');
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('video_gallery');
 
+
 Route::post('/subscriber', [SubscriberController::class, 'index'])->name('subscribe');
 Route::get('/subscriber/verify/{token}/{email}', [SubscriberController::class, 'verify'])->name('subscribe_verify');
+
+
+Route::post('/poll/submit', [PollController::class, 'submit'])->name('poll_submit');
+Route::get('/poll/previous', [PollController::class, 'previous'])->name('poll_previous');
 // Admin
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
@@ -175,4 +182,12 @@ Route::post('/admin/live-channel/store', [AdminLiveChannelController::class, 'st
 Route::get('/admin/live-channel/edit/{id}', [AdminLiveChannelController::class, 'edit'])->name('admin_live_channel_edit')->middleware('admin:admin');
 Route::post('/admin/live-channel/update/{id}', [AdminLiveChannelController::class, 'update'])->name('admin_live_channel_update');
 Route::get('/admin/live-channel/delete/{id}', [AdminLiveChannelController::class, 'delete'])->name('admin_live_channel_delete')->middleware('admin:admin');
+
+
+Route::get('/admin/online-poll/show', [AdminOnlinePollController::class, 'show'])->name('admin_online_poll_show')->middleware('admin:admin');
+Route::get('/admin/online-poll/create', [AdminOnlinePollController::class, 'create'])->name('admin_online_poll_create')->middleware('admin:admin');
+Route::post('/admin/online-poll/store', [AdminOnlinePollController::class, 'store'])->name('admin_online_poll_store');
+Route::get('/admin/online-poll/edit/{id}', [AdminOnlinePollController::class, 'edit'])->name('admin_online_poll_edit')->middleware('admin:admin');
+Route::post('/admin/online-poll/update/{id}', [AdminOnlinePollController::class, 'update'])->name('admin_online_poll_update');
+Route::get('/admin/online-poll/delete/{id}', [AdminOnlinePollController::class, 'delete'])->name('admin_online_poll_delete')->middleware('admin:admin');
 
