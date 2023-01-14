@@ -31,6 +31,7 @@ use App\Http\Controllers\Front\DisclaimerController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\SubscriberController;
+use App\Http\Controllers\Front\ArchiveController;
 use App\Http\Controllers\Front\PollController;
 
 // Front End
@@ -55,6 +56,10 @@ Route::get('/subscriber/verify/{token}/{email}', [SubscriberController::class, '
 
 Route::post('/poll/submit', [PollController::class, 'submit'])->name('poll_submit');
 Route::get('/poll/previous', [PollController::class, 'previous'])->name('poll_previous');
+
+
+Route::post('/archive/show', [ArchiveController::class, 'show'])->name('archive_show');
+Route::get('/archive/{year}/{month}', [ArchiveController::class, 'detail'])->name('archive_detail');
 // Admin
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
