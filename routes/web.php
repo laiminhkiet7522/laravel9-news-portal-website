@@ -33,6 +33,7 @@ use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\ArchiveController;
 use App\Http\Controllers\Front\PollController;
+use App\Http\Controllers\Front\TagController;
 
 // Front End
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -60,6 +61,12 @@ Route::get('/poll/previous', [PollController::class, 'previous'])->name('poll_pr
 
 Route::post('/archive/show', [ArchiveController::class, 'show'])->name('archive_show');
 Route::get('/archive/{year}/{month}', [ArchiveController::class, 'detail'])->name('archive_detail');
+
+
+Route::get('/tag/{tag_name}', [TagController::class, 'show'])->name('tag_posts_show');
+
+
+
 // Admin
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
