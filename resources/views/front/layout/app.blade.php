@@ -173,11 +173,9 @@
                             </div>
                         </div>
                         <ul class="social">
-                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            @foreach ($global_social_item_data as $item)
+                            <li><a href="{{ $item->url }}"><i class="{{ $item->icon }}"></i></a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
