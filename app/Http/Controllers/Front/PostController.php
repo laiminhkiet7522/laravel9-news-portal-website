@@ -21,6 +21,8 @@ class PostController extends Controller
         $new_value = $post_detail->visitors + 1;
         $post_detail->visitors = $new_value;
         $post_detail->update();
-        return view('front.post_detail', compact('post_detail','user_data','tag_data'));
+
+        $related_post_array =  Post::with('rSubCategory')->orderBy('id','desc')->where('sub_category_id',$post_detail->sub_category_id)->get();
+        return view('front.post_detail', compact('post_detail','user_data','tag_data','related_post_array'));
     }
 }
