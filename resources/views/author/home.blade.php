@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('author.layout.app')
 
 @section('heading', 'Dashboard')
 
@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total News Categories</h4>
+                        <h4>Total Active News</h4>
                     </div>
                     <div class="card-body">
                         12
@@ -26,25 +26,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total News</h4>
+                        <h4>Total Pending News</h4>
                     </div>
                     <div class="card-body">
-                        122
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>Total Users</h4>
-                    </div>
-                    <div class="card-body">
-                        45
+                        2
                     </div>
                 </div>
             </div>

@@ -21,19 +21,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="login-form">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Email Address</label>
-                            <input type="text" class="form-control">
+                    <form action="{{ route('login_submit') }}" method="post">
+                        @csrf
+                        <div class="login-form">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Email Address</label>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary bg-website">Login</button>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Password</label>
-                            <input type="password" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-primary bg-website">Login</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -18,6 +18,12 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminOnlinePollController;
 use App\Http\Controllers\Admin\AdminSocialItemController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
+use App\Http\Controllers\Admin\AdminAuthorController;
+
+
+use App\Http\Controllers\Author\AuthorHomeController;
+use App\Http\Controllers\Author\AuthorProfileController;
+
 
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\AboutController;
@@ -47,7 +53,6 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/terms-and-conditions', [TermsController::class, 'index'])->name('terms');
 Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('privacy');
 Route::get('/disclaimer', [DisclaimerController::class, 'index'])->name('disclaimer');
-Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/news-detail/{id}', [PostController::class, 'detail'])->name('news_detail');
 Route::get('/category/{id}', [SubCategoryController::class, 'index'])->name('category');
 Route::get('/photo-gallery', [PhotoController::class, 'index'])->name('photo_gallery');
@@ -67,6 +72,22 @@ Route::get('/archive/{year}/{month}', [ArchiveController::class, 'detail'])->nam
 
 
 Route::get('/tag/{tag_name}', [TagController::class, 'show'])->name('tag_posts_show');
+
+
+
+//Author
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login-submit', [LoginController::class, 'login_submit'])->name('login_submit');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/author/home', [AuthorHomeController::class, 'index'])->name('author_home')->middleware('author:author'); 
+
+
+
+Route::get('/author/edit-profile', [AuthorProfileController::class, 'index'])->name('author_profile')->middleware('author:author');
+Route::post('/author/edit-profile-submit', [AuthorProfileController::class, 'profile_submit'])->name('author_profile_submit');
+
+
+
 
 
 
@@ -213,4 +234,12 @@ Route::post('/admin/social-item/store', [AdminSocialItemController::class, 'stor
 Route::get('/admin/social-item/edit/{id}', [AdminSocialItemController::class, 'edit'])->name('admin_social_item_edit')->middleware('admin:admin');
 Route::post('/admin/social-item/update/{id}', [AdminSocialItemController::class, 'update'])->name('admin_social_item_update');
 Route::get('/admin/social-item/delete/{id}', [AdminSocialItemController::class, 'delete'])->name('admin_social_item_delete')->middleware('admin:admin');
+
+
+Route::get('/admin/author/show', [AdminAuthorController::class, 'show'])->name('admin_author_show')->middleware('admin:admin');
+Route::get('/admin/author/create', [AdminAuthorController::class, 'create'])->name('admin_author_create')->middleware('admin:admin');
+Route::post('/admin/author/store', [AdminAuthorController::class, 'store'])->name('admin_author_store');
+Route::get('/admin/author/edit/{id}', [AdminAuthorController::class, 'edit'])->name('admin_author_edit')->middleware('admin:admin');
+Route::post('/admin/author/update/{id}', [AdminAuthorController::class, 'update'])->name('admin_author_update');
+Route::get('/admin/author/delete/{id}', [AdminAuthorController::class, 'delete'])->name('admin_author_delete')->middleware('admin:admin');
 
