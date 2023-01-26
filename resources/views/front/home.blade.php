@@ -26,6 +26,8 @@
         </div>
     </div>
 @endif
+
+
 <div class="home-main">
     <div class="container">
         <div class="row g-2">
@@ -58,15 +60,18 @@
                                                 $user_data = \App\Models\Admin::where('id', $item->admin_id)->first();
                                             @endphp
                                         @else
+                                            @php
+                                                $user_data = \App\Models\Author::where('id', $item->author_id)->first();
+                                            @endphp
                                         @endif
-                                        <a href="">{{ $user_data->name }}</a>
+                                        <a href="javascript:void;">{{ $user_data->name }}</a>
                                     </div>
                                     <div class="date">
                                         @php
                                             $ts = strtotime($item->updated_at);
                                             $updated_date = date('d F, Y', $ts);
                                         @endphp
-                                        <a href="">{{ $updated_date }}</a>
+                                        <a href="javascript:void;">{{ $updated_date }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -108,15 +113,18 @@
                                             $user_data = \App\Models\Admin::where('id', $item->admin_id)->first();
                                         @endphp
                                     @else
+                                        @php
+                                            $user_data = \App\Models\Author::where('id', $item->author_id)->first();
+                                        @endphp
                                     @endif
-                                    <a href="">{{ $user_data->name }}</a>
+                                    <a href="javascript:void;">{{ $user_data->name }}</a>
                                 </div>
                                 <div class="date">
                                     @php
                                         $ts = strtotime($item->updated_at);
                                         $updated_date = date('d F, Y', $ts);
                                     @endphp
-                                    <a href="">{{ $updated_date }}</a>
+                                    <a href="javascript:void;">{{ $updated_date }}</a>
                                 </div>
                             </div>
                         </div>
@@ -235,15 +243,18 @@
                                                 $user_data = \App\Models\Admin::where('id', $single->admin_id)->first();
                                             @endphp
                                         @else
+                                            @php
+                                                $user_data = \App\Models\Author::where('id', $single->author_id)->first();
+                                            @endphp
                                         @endif
-                                        <a href="">{{ $user_data->name }}</a>
+                                        <a href="javascript:void;">{{ $user_data->name }}</a>
                                     </div>
                                     <div class="date">
                                         @php
                                             $ts = strtotime($single->updated_at);
                                             $updated_date = date('d F, Y', $ts);
                                         @endphp
-                                        <a href="">{{ $updated_date }}
+                                        <a href="javascript:void;">{{ $updated_date }}
                                         </a>
                                     </div>
                                 </div>
@@ -284,15 +295,18 @@
                                                     $user_data = \App\Models\Admin::where('id', $single->admin_id)->first();
                                                 @endphp
                                             @else
+                                                @php
+                                                    $user_data = \App\Models\Author::where('id', $single->author_id)->first();
+                                                @endphp
                                             @endif
-                                            <a href="">{{ $user_data->name }}</a>
+                                            <a href="javascript:void;">{{ $user_data->name }}</a>
                                         </div>
                                         <div class="date">
                                             @php
                                                 $ts = strtotime($single->updated_at);
                                                 $updated_date = date('d F, Y', $ts);
                                             @endphp
-                                            <a href="">{{ $updated_date }}
+                                            <a href="javascript:void;">{{ $updated_date }}
                                             </a>
                                         </div>
                                     </div>

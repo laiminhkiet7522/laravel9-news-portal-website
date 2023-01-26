@@ -1,8 +1,8 @@
-@extends('admin.layout.app')
+@extends('author.layout.app')
 
 @section('heading', 'Posts')
 @section('button')
-    <a href="{{ route('admin_post_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add</a>
+    <a href="{{ route('author_post_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add</a>
 @endsection
 
 @section('main_content')
@@ -21,7 +21,6 @@
                                         <th>Sub Category</th>
                                         <th>Category</th>
                                         <th>Author</th>
-                                        <th>Admin</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -36,22 +35,14 @@
                                             <td>{{ $row->rSubCategory->rCategory->category_name }}</td>
                                             <td>
                                                 @if ($row->author_id != 0)
-                                                    {{ \App\Models\Author::where('id', $row->author_id)->first()->name }}
+                                                    {{ Auth::guard('author')->user()->name }}
                                                 @endif
-                                            </td>
-                                            <td>
-                                                @if ($row->admin_id != 0)
-                                                    {{ Auth::guard('admin')->user()->name }}
-                                                @endif
-                                            </td>
+                                            </td>   
                                             <td class="pt_10 pb_10">
-                                                @if ($row->admin_id != 0)
-                                                    <a href="{{ route('admin_post_edit', $row->id) }}"
-                                                        class="btn btn-primary">Edit</a>
-                                                    <a href="{{ route('admin_post_delete', $row->id) }}"
-                                                        class="btn btn-danger"
-                                                        onClick="return confirm('Are you sure?');">Delete</a>
-                                                @endif
+                                                <a href="{{ route('author_post_edit', $row->id) }}"
+                                                    class="btn btn-primary">Edit</a>
+                                                <a href="{{ route('author_post_delete', $row->id) }}" class="btn btn-danger"
+                                                    onClick="return confirm('Are you sure?');">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

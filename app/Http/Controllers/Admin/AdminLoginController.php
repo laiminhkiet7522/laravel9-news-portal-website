@@ -25,7 +25,6 @@ class AdminLoginController extends Controller
         $request->validate([
             'email'=>'required|email'
         ]);
-        //Neu co thong tin trong database
         $admin_data = Admin::where('email',$request->email)->first();
         if(!$admin_data){
             return redirect()->back()->with('error','Email address not found!');

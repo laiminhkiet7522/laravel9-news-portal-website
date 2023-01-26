@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\AdminAuthorController;
 
 use App\Http\Controllers\Author\AuthorHomeController;
 use App\Http\Controllers\Author\AuthorProfileController;
+use App\Http\Controllers\Author\AuthorPostController;
 
 
 use App\Http\Controllers\Front\HomeController;
@@ -82,12 +83,17 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/author/home', [AuthorHomeController::class, 'index'])->name('author_home')->middleware('author:author'); 
 
 
-
 Route::get('/author/edit-profile', [AuthorProfileController::class, 'index'])->name('author_profile')->middleware('author:author');
 Route::post('/author/edit-profile-submit', [AuthorProfileController::class, 'profile_submit'])->name('author_profile_submit');
 
 
-
+Route::get('/author/post/show', [AuthorPostController::class, 'show'])->name('author_post_show')->middleware('author:author');
+Route::get('/author/post/create', [AuthorPostController::class, 'create'])->name('author_post_create')->middleware('author:author');
+Route::post('/author/post/store', [AuthorPostController::class, 'store'])->name('author_post_store');
+Route::get('/author/post/edit/{id}', [AuthorPostController::class, 'edit'])->name('author_post_edit')->middleware('author:author');
+Route::post('/author/post/update/{id}', [AuthorPostController::class, 'update'])->name('author_post_update');
+Route::get('/author/post/delete/{id}', [AuthorPostController::class, 'delete'])->name('author_post_delete')->middleware('author:author');
+Route::get('/author/post/tag/delete/{id}/{id1}', [AuthorPostController::class, 'delete_tag'])->name('author_post_delete_tag')->middleware('author:author');
 
 
 

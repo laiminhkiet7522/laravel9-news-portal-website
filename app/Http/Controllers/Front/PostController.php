@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
 
@@ -16,7 +17,7 @@ class PostController extends Controller
         if($post_detail->author_id == 0){
             $user_data = Admin::where('id',$post_detail->admin_id)->first();
         }else{
-
+            $user_data = Author::where('id',$post_detail->author_id)->first();
         }
         $new_value = $post_detail->visitors + 1;
         $post_detail->visitors = $new_value;

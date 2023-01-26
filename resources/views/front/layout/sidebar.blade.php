@@ -18,12 +18,15 @@
         </div>
         <div class="tag">
             @php
-                $all_tag = \App\Models\Tag::select('tag_name')->distinct()->get();
+                $all_tag = \App\Models\Tag::select('tag_name')
+                    ->distinct()
+                    ->get();
             @endphp
             @foreach ($all_tag as $item)
-            <div class="tag-item">
-                <a href="{{ route('tag_posts_show', $item->tag_name) }}"><span class="badge bg-secondary">{{ $item->tag_name }}</span></a>
-            </div>
+                <div class="tag-item">
+                    <a href="{{ route('tag_posts_show', $item->tag_name) }}"><span
+                            class="badge bg-secondary">{{ $item->tag_name }}</span></a>
+                </div>
             @endforeach
         </div>
     </div>
@@ -45,7 +48,7 @@
                 }
                 $archive_array = array_values(array_unique($archive_array));
             @endphp
-            <form action="{{ route('archive_show') }}" method="post" >
+            <form action="{{ route('archive_show') }}" method="post">
                 @csrf
                 <select name="archive_month_year" class="form-select" onChange="this.form.submit()">
                     <option value="">Select Month</option>
@@ -118,15 +121,18 @@
                                             $user_data = \App\Models\Admin::where('id', $item->admin_id)->first();
                                         @endphp
                                     @else
+                                        @php
+                                            $user_data = \App\Models\Author::where('id', $item->author_id)->first();
+                                        @endphp
                                     @endif
-                                    <a href="">{{ $user_data->name }}</a>
+                                    <a href="javascript:void;">{{ $user_data->name }}</a>
                                 </div>
                                 <div class="date">
                                     @php
                                         $ts = strtotime($item->updated_at);
                                         $updated_data = date('d F, Y', $ts);
                                     @endphp
-                                    <a href="">{{ $updated_data }}</a>
+                                    <a href="javascript:void;">{{ $updated_data }}</a>
                                 </div>
                             </div>
                         </div>
@@ -155,15 +161,18 @@
                                         $user_data = \App\Models\Admin::where('id', $item->admin_id)->first();
                                     @endphp
                                 @else
+                                    @php
+                                        $user_data = \App\Models\Author::where('id', $item->author_id)->first();
+                                    @endphp
                                 @endif
-                                <a href="">{{ $user_data->name }}</a>
+                                <a href="javascript:void;">{{ $user_data->name }}</a>
                             </div>
                             <div class="date">
                                 @php
                                     $ts = strtotime($item->updated_at);
                                     $updated_data = date('d F, Y', $ts);
                                 @endphp
-                                <a href="">{{ $updated_data }}</a>
+                                <a href="javascript:void;">{{ $updated_data }}</a>
                             </div>
                         </div>
                     </div>
