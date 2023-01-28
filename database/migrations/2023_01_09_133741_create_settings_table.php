@@ -19,6 +19,16 @@ return new class extends Migration
             $table->text('news_ticker_status');
             $table->text('video_total');
             $table->text('video_status');
+            $table->text('logo');
+            $table->text('favicon');
+            $table->text('top_bar_date_status');
+            $table->text('top_bar_email');
+            $table->text('top_bar_email_status');
+            $table->text('theme_color_1');
+            $table->text('theme_color_2');
+            $table->text('analytic_id');
+            $table->text('analytic_status');
+            $table->text('disqus_code');
             $table->timestamps();
         });
     }

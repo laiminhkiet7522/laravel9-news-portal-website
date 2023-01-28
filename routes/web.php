@@ -96,6 +96,15 @@ Route::get('/author/post/delete/{id}', [AuthorPostController::class, 'delete'])-
 Route::get('/author/post/tag/delete/{id}/{id1}', [AuthorPostController::class, 'delete_tag'])->name('author_post_delete_tag')->middleware('author:author');
 
 
+Route::get('/forget-password', [LoginController::class, 'forget_password'])->name('forget_password');
+Route::post('/forget-password-submit', [LoginController::class, 'forget_password_submit'])->name('forget_password_submit');
+Route::get('/reset-password/{token}/{email}', [LoginController::class, 'reset_password'])->name('reset_password');
+Route::post('/reset-password-submit', [LoginController::class, 'reset_password_submit'])->name('reset_password_submit');
+
+
+
+
+
 
 // Admin
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
