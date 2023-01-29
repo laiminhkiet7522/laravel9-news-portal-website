@@ -9,11 +9,13 @@ use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\Category;
 use App\Models\Video;
+use App\Helper\Helpers;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
+        Helpers::read_json();
         $home_ad_data = HomeAdvertisement::where('id',1)->first();
         $setting_data = Setting::where('id',1)->first();
         $video_data = Video::get();
@@ -23,8 +25,9 @@ class HomeController extends Controller
         return view('front.home', compact('home_ad_data','setting_data','post_data','sub_category_data','video_data','category_data'));
     }
     public function get_subcategory_by_category($id){
+        Helpers::read_json();
         $sub_category_data = SubCategory::where('category_id',$id)->get();
-        $respone = "<option value =''>Select SubCategory</option>";
+        $respone = "<option value =''>".SELECT_SUBCATEGORY."</option>";
         foreach($sub_category_data as $item){
             $respone .= '<option value ="'.$item->id.'">'.$item->sub_category_name.'</option>';
         }

@@ -7,6 +7,7 @@ use App\Mail\Websitemail;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Helper\Helpers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -14,6 +15,7 @@ class LoginController extends Controller
 {
     public function index()
     {
+        Helpers::read_json();
         $page_data = Page::where('id', 1)->first();
         return view('front.login', compact('page_data'));
     }
@@ -39,6 +41,7 @@ class LoginController extends Controller
     }
 
     public function forget_password(){
+        Helpers::read_json();
         return view('author.forget_password');
     }
     public function forget_password_submit(Request $request){
@@ -62,6 +65,7 @@ class LoginController extends Controller
         return redirect()->route('login')->with('success','Please check your email and follow the steps here');
     }
     public function reset_password($token, $email){
+        Helpers::read_json();
         $author_data = Author::where('token',$token)->where('email',$email)->first();
         if(!$author_data){
             return redirect()->route('login');

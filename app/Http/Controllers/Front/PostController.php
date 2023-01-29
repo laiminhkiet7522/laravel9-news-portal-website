@@ -8,10 +8,11 @@ use App\Models\Admin;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\Tag;
-
+use App\Helper\Helpers;
 class PostController extends Controller
 {
     public function detail($id){
+        Helpers::read_json();
         $post_detail = Post::with('rSubCategory')->where('id',$id)->first();
         $tag_data = Tag::where('post_id',$id)->get();
         if($post_detail->author_id == 0){

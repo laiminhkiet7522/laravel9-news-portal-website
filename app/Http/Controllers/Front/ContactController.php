@@ -9,11 +9,14 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\Websitemail;
 use Illuminate\Support\Facades\Mail;
+use App\Helper\Helpers;
+use Nette\Schema\Helpers as SchemaHelpers;
 
 class ContactController extends Controller
 {
     public function index()
     {
+        Helpers::read_json();
         $page_data = Page::where('id', 1)->first();
         return view('front.contact', compact('page_data'));
     }

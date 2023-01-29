@@ -5,11 +5,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>All post of tag: {{ $tag_name }}</h2>
+                    <h2>{{ ALL_POST_OF_TAG }}: {{ $tag_name }}</h2>
                     <nav class="breadcrumb-container">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item">Tag</li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
+                            <li class="breadcrumb-item">{{ TAG }}</li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $tag_name }}
                             </li>
                         </ol>
@@ -66,12 +66,8 @@
                                     </div>
                                 @endforeach
                             @else
-                                <span class="text-danger">No post is found</span>
+                                <span class="text-danger">{{ NO_POST_FOUND }}</span>
                             @endif
-                            {{-- <div class="col-md-12">
-                                {{ $all_posts->links() }}
-                            </div> --}}
-
                         </div>
                     </div>
 

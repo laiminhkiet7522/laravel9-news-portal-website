@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Language;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\OnlinePoll;
@@ -45,6 +46,8 @@ class AppServiceProvider extends ServiceProvider
         $online_poll_data = OnlinePoll::orderBy('id','desc')->first();
         $social_item_data = SocialItem::orderBy('id','desc')->get(); 
         $setting_data = Setting::where('id',1)->first(); 
+        $language_data = Language::get();
+        $default_lang_data = Language::where('is_default','Yes')->first();
         $categories = Category::with('rSubCategory')->where('show_on_menu','Show')->orderBy('category_order','asc')->get();
         view()->share('global_top_ad_data', $top_ad_data);
         view()->share('global_sidebar_top_ad', $sidebar_top_ad);
@@ -57,5 +60,7 @@ class AppServiceProvider extends ServiceProvider
         view()->share('global_online_poll_data', $online_poll_data);
         view()->share('global_social_item_data', $social_item_data);
         view()->share('global_setting_data', $setting_data);
+        view()->share('global_language_data', $language_data);
+        view()->share('global_short_name', $default_lang_data->short_name);
     }
 }

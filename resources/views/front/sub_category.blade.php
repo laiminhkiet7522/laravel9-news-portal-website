@@ -8,7 +8,7 @@
                     <h2>{{ $sub_category_data->sub_category_name }}</h2>
                     <nav class="breadcrumb-container">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ HOME }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $sub_category_data->sub_category_name }}
                             </li>
                         </ol>

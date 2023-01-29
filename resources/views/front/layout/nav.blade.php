@@ -11,7 +11,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ HOME }}</a>
                             </li>
 
                             @foreach ($global_categories as $item)
@@ -30,13 +30,11 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Gallery
+                                    {{ GALLERY }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('photo_gallery') }}">Photo
-                                            Gallery</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('video_gallery') }}">Video
-                                            Gallery</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('photo_gallery') }}">{{ PHOTO_GALLERY }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('video_gallery') }}">{{ VIDEO_GALLERY }}</a></li>
                                 </ul>
                             </li>
                         </ul>

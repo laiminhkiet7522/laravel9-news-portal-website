@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="acme-news-ticker">
-                            <div class="acme-news-ticker-label">Latest News</div>
+                            <div class="acme-news-ticker-label">{{ LATEST_NEW }}</div>
                             <div class="acme-news-ticker-box">
                                 <ul class="my-news-ticker">
                                     @php $i = 0;@endphp
@@ -165,13 +165,13 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <input type="text" name="text_item" class="form-control"
-                        placeholder="Title or Description">
+                        placeholder="{{ TITLE_DESCRIPTION }}">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <select name="category" id="category" class="form-select">
-                        <option value="">Select Category</option>
+                        <option value="">{{ SELECT_CATEGORY }}</option>
                         @foreach ($category_data as $item)
                             <option value="{{ $item->id }}">{{ $item->category_name }}</option>
                         @endforeach
@@ -181,12 +181,12 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <select name="sub_category" id="sub_category" class="form-select">
-                        <option value="">Select SubCategory</option>
+                        <option value="">{{ SELECT_SUBCATEGORY }}</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary">{{ SEARCH }}</button>
             </div>
 
         </div>
@@ -212,8 +212,7 @@
                             <h2>{{ $item->sub_category_name }}</h2>
                         </div>
                         <div class="col-lg-6 col-md-12 see-all">
-                            <a href="{{ route('category', $item->id) }}" class="btn btn-primary btn-sm">See All
-                                News</a>
+                            <a href="{{ route('category', $item->id) }}" class="btn btn-primary btn-sm">{{ SEE_ALL_NEWS }}</a>
                         </div>
                         <div class="col-md-12">
                             <div class="bar"></div>
@@ -334,7 +333,7 @@
 <div class="row">
 <div class="col-md-12">
     <div class="video-heading">
-        <h2>Videos</h2>
+        <h2>{{ VIDEOS }}</h2>
     </div>
 </div>
 </div>

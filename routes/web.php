@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AdminOnlinePollController;
 use App\Http\Controllers\Admin\AdminSocialItemController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminAuthorController;
+use App\Http\Controllers\Admin\AdminLanguageController;   
 
 
 use App\Http\Controllers\Author\AuthorHomeController;
@@ -40,11 +41,13 @@ use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\ArchiveController;
+use App\Http\Controllers\Front\LanguageController;
 use App\Http\Controllers\Front\PollController;
 use App\Http\Controllers\Front\TagController;
 
 // Front End
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/language/switch', [LanguageController::class, 'switch_language'])->name('front_language');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/subcategory-by-category/{id}', [HomeController::class, 'get_subcategory_by_category'])->name('subcategory_by_category');
 Route::post('/search/result', [HomeController::class, 'search'])->name('search_result');
@@ -258,3 +261,14 @@ Route::get('/admin/author/edit/{id}', [AdminAuthorController::class, 'edit'])->n
 Route::post('/admin/author/update/{id}', [AdminAuthorController::class, 'update'])->name('admin_author_update');
 Route::get('/admin/author/delete/{id}', [AdminAuthorController::class, 'delete'])->name('admin_author_delete')->middleware('admin:admin');
 
+
+
+Route::get('/admin/language/show', [AdminLanguageController::class, 'show'])->name('admin_language_show')->middleware('admin:admin');
+Route::get('/admin/language/create', [AdminLanguageController::class, 'create'])->name('admin_language_create')->middleware('admin:admin');
+Route::post('/admin/language/store', [AdminLanguageController::class, 'store'])->name('admin_language_store');
+Route::get('/admin/language/edit/{id}', [AdminLanguageController::class, 'edit'])->name('admin_language_edit')->middleware('admin:admin');
+Route::post('/admin/language/update/{id}', [AdminLanguageController::class, 'update'])->name('admin_language_update');
+Route::get('/admin/language/delete/{id}', [AdminLanguageController::class, 'delete'])->name('admin_language_delete')->middleware('admin:admin');
+Route::get('/admin/language/update-detail/{id}', [AdminLanguageController::class, 'update_detail'])->name('admin_language_update_detail')->middleware('admin:admin');
+Route::post('/admin/language/update-detail-submit/{id}', [AdminLanguageController::class, 'update_detail_submit'])->name('admin_language_update_detail_submit');  
+ 

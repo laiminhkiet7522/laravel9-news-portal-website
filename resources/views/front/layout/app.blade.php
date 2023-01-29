@@ -1,3 +1,12 @@
+@if (!session()->get('session_short_name'))
+    @php
+        $current_short_name = $global_short_name;
+    @endphp
+@else
+    @php
+        $current_short_name = session()->get('session_short_name');
+    @endphp
+@endif
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,17 +28,17 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6212352ed76fda0a"></script>
 
     @if ($global_setting_data->analytic_status == 'Show')
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $global_setting_data->analytic_id }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ $global_setting_data->analytic_id }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', '{{ $global_setting_data->analytic_id }}');
-    </script>
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', '{{ $global_setting_data->analytic_id }}');
+        </script>
     @endif
     <style>
         .website-menu,
@@ -84,11 +93,6 @@
             color: #{{ $global_setting_data->theme_color_1 }} !important;
         }
 
-        .nav-pills .nav-link.active,
-        .page-item.active .page-link {
-            color: #fff !important;
-        }
-
         .home-main .inner .text-inner .category span,
         .home-main .inner .text-inner .category span a,
         .home-content .left .news-total-item .left-side .category span,
@@ -102,8 +106,12 @@
         .tag-section-content span {
             background: #{{ $global_setting_data->theme_color_2 }} !important;
         }
-    </style>
 
+        .nav-pills .nav-link.active,
+        .page-item.active .page-link {
+            color: #fff !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -113,7 +121,7 @@
                 <div class="col-md-6">
                     <ul>
                         @if ($global_setting_data->top_bar_date_status == 'Show')
-                            <li class="today-text">Today: {{ date('F d, Y') }}</li>
+                            <li class="today-text">{{ TODAY }}: {{ date('F d, Y') }}</li>
                         @endif
                         @if ($global_setting_data->top_bar_email_status == 'Show')
                             <li class="email-text">{{ $global_setting_data->top_bar_email }}</li>
@@ -123,7 +131,8 @@
                 <div class="col-md-6">
                     <ul class="right">
                         @if ($global_page_data->faq_status == 'Show')
-                            <li class="menu"><a href="{{ route('faq') }}">{{ $global_page_data->faq_title }}</a></li>
+                            <li class="menu"><a href="{{ route('faq') }}">{{ $global_page_data->faq_title }}</a>
+                            </li>
                         @endif
                         @if ($global_page_data->about_status == 'Show')
                             <li class="menu"><a href="{{ route('about') }}">{{ $global_page_data->about_title }}</a>
@@ -138,15 +147,24 @@
                             <li class="menu"><a href="{{ route('login') }}">{{ $global_page_data->login_title }}</a>
                             </li>
                         @endif
+
+
                         <li>
                             <div class="language-switch">
-                                <select name="">
-                                    <option value="">English</option>
-                                    <option value="">Hindi</option>
-                                    <option value="">Arabic</option>
-                                </select>
+                                <form action="{{ route('front_language') }}" method="post">
+                                    @csrf
+                                    <select name="short_name" onchange="this.form.submit()">
+                                        @foreach ($global_language_data as $item)
+                                            <option value="{{ $item->short_name }}"
+                                                @if ($item->short_name == $current_short_name) selected @endif>{{ $item->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </form>
                             </div>
                         </li>
+
+
                     </ul>
                 </div>
             </div>
@@ -188,19 +206,17 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">About Us</h2>
+                        <h2 class="heading">{{ FOOTER_COL_1_HEADING }}</h2>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.
+                           {{ FOOTER_COL_1_TEXT }}
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Useful Links</h2>
+                        <h2 class="heading">{{ FOOTER_COL_2_HEADING }}</h2>
                         <ul class="useful-links">
-                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('home') }}">{{ HOME }}</a></li>
 
                             @if ($global_page_data->terms_status == 'Show')
                                 <li><a href="{{ route('terms') }}">{{ $global_page_data->terms_title }}</a></li>
@@ -224,14 +240,13 @@
 
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Contact</h2>
+                        <h2 class="heading">{{ FOOTER_COL_3_HEADING }}</h2>
                         <div class="list-item">
                             <div class="left">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="right">
-                                34 Antiger Lane,<br>
-                                PK Lane, USA, 12937
+                                {{ FOOTER_ADDRESS }}
                             </div>
                         </div>
                         <div class="list-item">
@@ -239,7 +254,7 @@
                                 <i class="far fa-envelope"></i>
                             </div>
                             <div class="right">
-                                contact@arefindev.com
+                                {{ FOOTER_EMAIL }}
                             </div>
                         </div>
                         <div class="list-item">
@@ -247,7 +262,7 @@
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div class="right">
-                                122-222-1212
+                                {{ FOOTER_PHONE }}
                             </div>
                         </div>
                         <ul class="social">
@@ -260,18 +275,18 @@
 
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Newsletter</h2>
+                        <h2 class="heading">{{ FOOTER_COL_4_HEADING }}</h2>
                         <p>
-                            In order to get the latest news and other great items, please subscribe us here:
+                            {{ NEWSLETTER_TEXT }}
                         </p>
                         <form action="{{ route('subscribe') }}" method="post" class="form_subscribe_ajax">
                             @csrf
                             <div class="form-group">
-                                <input type="text" name="email" class="form-control" placeholder="Email Address">
+                                <input type="text" name="email" class="form-control" placeholder="{{ EMAIL_ADDRESS }}">
                                 <span class="text-danger error-text email_error"></span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary" value="Subscribe Now">
+                                <input type="submit" class="btn btn-primary" value="{{ SUBSCRIBE_NOW }}">
                             </div>
                         </form>
                     </div>
@@ -282,7 +297,7 @@
     </div>
 
     <div class="copyright">
-        Copyright 2022, ArefinDev. All Rights Reserved.
+        {{ COPYRIGHT_TEXT }}
     </div>
 
     <div class="scroll-top">
@@ -320,7 +335,6 @@
                                 message: data.success_message,
                             });
                         }
-
                     }
                 });
             });
