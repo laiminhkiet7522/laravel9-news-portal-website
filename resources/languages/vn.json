@@ -54,5 +54,19 @@
     "SEARCH_RESULT": "K\u1ebft qu\u1ea3 t\u00ecm ki\u1ebfm",
     "ALL_POST_OF_TAG": "T\u1ea5t c\u1ea3 c\u00e1c b\u00e0i \u0111\u0103ng c\u1ee7a th\u1ebb",
     "TAG": "Th\u1ebb",
-    "COMMENT": "B\u00ecnh lu\u1eadn"
+    "COMMENT": "B\u00ecnh lu\u1eadn",
+    "ERROR_NAME_REQUIRED": "T\u00ean kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf tr\u1ed1ng",
+    "ERROR_EMAIL_REQUIRED": "Email kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf tr\u1ed1ng",
+    "ERROR_EMAIL_VALID": "Email ph\u1ea3i h\u1ee3p l\u1ec7",
+    "ERROR_MESSAGE_REQUIRED": "L\u1eddi nh\u1eafn kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf tr\u1ed1ng",
+    "SUCCESS_CONTACT": "Email \u0111\u01b0\u1ee3c g\u1eedi th\u00e0nh c\u00f4ng! Ch\u00fang t\u00f4i s\u1ebd li\u00ean h\u1ec7 l\u1ea1i v\u1edbi b\u1ea1n s\u1edbm",
+    "SUCCESS_SUBSCRIBER": "Vui l\u00f2ng ki\u1ec3m tra \u0111\u1ecba ch\u1ec9 email c\u1ee7a b\u1ea1n \u0111\u1ec3 x\u00e1c minh l\u00e0 ng\u01b0\u1eddi \u0111\u0103ng k\u00fd!",
+    "SUCCESS_SUBSCRIBER_CONFIRM": "B\u1ea1n \u0111\u00e3 \u0111\u01b0\u1ee3c x\u00e1c minh th\u00e0nh c\u00f4ng v\u1edbi t\u01b0 c\u00e1ch l\u00e0 ng\u01b0\u1eddi \u0111\u0103ng k\u00fd h\u1ec7 th\u1ed1ng n\u00e0y",
+    "ERROR_PASSWORD_REQUIRED": "M\u1eadt kh\u1ea9u kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf tr\u1ed1ng",
+    "ERROR_RETYPE_PASSWORD_REQUIRED": "Nh\u1eadp l\u1ea1i m\u1eadt kh\u1ea9u kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf tr\u1ed1ng",
+    "ERROR_RETYPE_PASSWORD_SAME": "C\u1ea3 hai m\u1eadt kh\u1ea9u ph\u1ea3i kh\u1edbp",
+    "ERROR_EMAIL_NOT_FOUND": "Kh\u00f4ng t\u00ecm th\u1ea5y \u0111\u1ecba ch\u1ec9 Email",
+    "SUCCESS_FORGET_PASSWORD": "Vui l\u00f2ng ki\u1ec3m tra email c\u1ee7a b\u1ea1n v\u00e0 l\u00e0m theo c\u00e1c b\u01b0\u1edbc t\u1ea1i \u0111\u00e2y",
+    "SUCCESS_RESET_PASSWORD": "M\u1eadt kh\u1ea9u \u0111\u01b0\u1ee3c thi\u1ebft l\u1eadp l\u1ea1i th\u00e0nh c\u00f4ng!",
+    "INFORMATION_NOT_CORRECT": "Th\u00f4ng tin kh\u00f4ng ch\u00ednh x\u00e1c!"
 }

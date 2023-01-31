@@ -54,5 +54,19 @@
     "SEARCH_RESULT":"Search Result",  
     "ALL_POST_OF_TAG":"All post of tag",
     "TAG":"Tag",
-    "COMMENT":"Comment"
+    "COMMENT":"Comment",
+    "ERROR_NAME_REQUIRED":"Name is required",
+    "ERROR_EMAIL_REQUIRED":"Email is required",
+    "ERROR_EMAIL_VALID":"Email must be valid",
+    "ERROR_MESSAGE_REQUIRED":"Message is required",
+    "SUCCESS_CONTACT":"Email is sent successfully! We will contact you soon",
+    "SUCCESS_SUBSCRIBER":"Please check your email address to verify as subscriber!",
+    "SUCCESS_SUBSCRIBER_CONFIRM":"You are successfully verified as a subscriber to this system",
+    "ERROR_PASSWORD_REQUIRED":"Password is required",
+    "ERROR_RETYPE_PASSWORD_REQUIRED":"Retype Password is required",
+    "ERROR_RETYPE_PASSWORD_SAME":"Both password must match",
+    "ERROR_EMAIL_NOT_FOUND":"Email address not found!",
+    "SUCCESS_FORGET_PASSWORD":"Please check your email and follow the steps here",
+    "SUCCESS_RESET_PASSWORD": "Password is reset successfully!",
+    "INFORMATION_NOT_CORRECT": "Information is not correct!"
 }

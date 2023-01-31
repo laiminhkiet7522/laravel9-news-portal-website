@@ -11,7 +11,7 @@ class AdminCategoryController extends Controller
 {
     public function show()
     {
-        $categories = Category::orderBy('category_order', 'asc')->get();
+        $categories = Category::with('rLanguage')->orderBy('category_order', 'asc')->get();
         return view('admin.category_show', compact('categories'));
     }
     public function create()
@@ -27,6 +27,7 @@ class AdminCategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->show_on_menu = $request->show_on_menu;
         $category->category_order = $request->category_order;
+        $category->language_id = $request->language_id;
         $category->save();
         return redirect()->route('admin_category_show')->with('success','Data is added successfully!');
     }
@@ -45,6 +46,7 @@ class AdminCategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->show_on_menu = $request->show_on_menu;
         $category->category_order = $request->category_order;
+        $category->language_id = $request->language_id;
         $category->update();
         return redirect()->route('admin_category_show')->with('success','Data is updated successfully!');
     }

@@ -37,13 +37,8 @@ class AppServiceProvider extends ServiceProvider
         PaginationPaginator::useBootstrap();
         
         $top_ad_data = TopAdvertisement::where('id', 1)->first();
-        $page_data = Page::where('id', 1)->first();
-        $recent_news_data = Post::with('rSubCategory')->orderBy('id','desc')->get();
-        $popular_news_data = Post::with('rSubCategory')->orderBy('visitors','desc')->get();
         $sidebar_top_ad = SidebarAdvertisement::where('sidebar_ad_location','Top')->get();
         $sidebar_bottom_ad = SidebarAdvertisement::where('sidebar_ad_location','Bottom')->get();
-        $live_channel_data = LiveChannel::get();
-        $online_poll_data = OnlinePoll::orderBy('id','desc')->first();
         $social_item_data = SocialItem::orderBy('id','desc')->get(); 
         $setting_data = Setting::where('id',1)->first(); 
         $language_data = Language::get();
@@ -53,11 +48,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('global_sidebar_top_ad', $sidebar_top_ad);
         view()->share('global_sidebar_bottom_ad', $sidebar_bottom_ad);
         view()->share('global_categories', $categories);
-        view()->share('global_page_data', $page_data);
-        view()->share('global_live_channel_data', $live_channel_data);
-        view()->share('global_recent_news_data', $recent_news_data);
-        view()->share('global_popular_news_data', $popular_news_data);
-        view()->share('global_online_poll_data', $online_poll_data);
         view()->share('global_social_item_data', $social_item_data);
         view()->share('global_setting_data', $setting_data);
         view()->share('global_language_data', $language_data);

@@ -8,7 +8,7 @@ use App\Models\Faq;
 class AdminFaqController extends Controller
 {
     public function show(){
-        $faq_data = Faq::get();
+        $faq_data = Faq::with('rLanguage')->get();
         return view('admin.faq_show', compact('faq_data'));
     }
     public function create(){
@@ -22,6 +22,7 @@ class AdminFaqController extends Controller
         $faq = new Faq();
         $faq->faq_title = $request->faq_title;
         $faq->faq_detail = $request->faq_detail;
+        $faq->language_id = $request->language_id;
         $faq->save();
         return redirect()->route('admin_faq_show')->with('success','Data is added successfully!');
     }
@@ -38,6 +39,7 @@ class AdminFaqController extends Controller
         $faq_data = Faq::where('id',$id)->first();
         $faq_data->faq_title = $request->faq_title;
         $faq_data->faq_detail = $request->faq_detail;
+        $faq_data->language_id = $request->language_id;
         $faq_data->update();
         return redirect()->route('admin_faq_show')->with('success', 'Data is updated successfully!');
     }

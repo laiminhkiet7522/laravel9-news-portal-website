@@ -18,6 +18,7 @@
                                         <th>SL</th>
                                         <th>Photo</th>
                                         <th>Caption</th>
+                                        <th>Language</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -28,6 +29,7 @@
                                             <td><img src="{{ asset('uploads/' . $row->photo) }}" alt=""
                                                     style="width: 200px"></td>
                                             <td>{{ $row->caption }}</td>
+                                            <td>{{ $row->rLanguage->name }}</td>
                                             <td class="pt_10 pb_10">
                                                 <a href="{{ route('admin_photo_edit', $row->id) }}"
                                                     class="btn btn-primary">Edit</a>

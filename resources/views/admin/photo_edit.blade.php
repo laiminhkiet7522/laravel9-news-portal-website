@@ -7,7 +7,7 @@
 
 @section('main_content')
     <div class="section-body">
-        <form action="{{ route('admin_photo_update',$photo_data->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin_photo_update', $photo_data->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-6">
@@ -15,7 +15,8 @@
                         <div class="card-body">
                             <div class="form-group mb-3">
                                 <label>Existing Photo *</label>
-                                <div><img src="{{ asset('uploads/'.$photo_data->photo) }}" alt="" style="width: 200px"></div>
+                                <div><img src="{{ asset('uploads/' . $photo_data->photo) }}" alt=""
+                                        style="width: 200px"></div>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Change Photo*</label>
@@ -23,7 +24,17 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label>Caption *</label>
-                                <input type="text" class="form-control" name="caption" value="{{ $photo_data->caption }}">
+                                <input type="text" class="form-control" name="caption"
+                                    value="{{ $photo_data->caption }}">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Select Language</label>
+                                <select name="language_id" class="form-control">
+                                    @foreach ($global_language_data as $row)
+                                        <option value="{{ $row->id }}"
+                                            @if ($row->id == $photo_data->language_id) selected @endif>{{ $row->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -28,6 +28,7 @@ class AdminPhotoController extends Controller
         $request->file('photo')->move(public_path('uploads/'),$final_name);
         $photo->photo = $final_name;
         $photo->caption = $request->caption;
+        $photo->language_id = $request->language_id;
         $photo->save();
         return redirect()->route('admin_photo_show')->with('success','Data is added successfully!');
     }
@@ -51,6 +52,7 @@ class AdminPhotoController extends Controller
             $photo_data->photo = $final_name;
         }
         $photo_data->caption = $request->caption;
+        $photo_data->language_id = $request->language_id;
         $photo_data->update();
         return redirect()->route('admin_photo_show')->with('success', 'Data is updated successfully!');
     }

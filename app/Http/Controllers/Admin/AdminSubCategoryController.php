@@ -9,7 +9,7 @@ use App\Models\Category;
 class AdminSubCategoryController extends Controller
 {
     public function show(){
-        $sub_categories = SubCategory::with('rCategory')->orderBy('sub_category_order','asc')->get();
+        $sub_categories = SubCategory::with('rCategory','rLanguage')->orderBy('sub_category_order','asc')->get();
         return view('admin.sub_category_show', compact('sub_categories'));
     }
     public function create()
@@ -28,6 +28,7 @@ class AdminSubCategoryController extends Controller
         $sub_category->show_on_home = $request->show_on_home;
         $sub_category->sub_category_order = $request->sub_category_order;
         $sub_category->category_id = $request->category_id;
+        $sub_category->language_id = $request->language_id;
         $sub_category->save();
         return redirect()->route('admin_sub_category_show')->with('success','Data is added successfully!');
     }
@@ -49,6 +50,7 @@ class AdminSubCategoryController extends Controller
         $sub_category->show_on_home = $request->show_on_home;
         $sub_category->sub_category_order = $request->sub_category_order;
         $sub_category->category_id = $request->category_id;
+        $sub_category->language_id = $request->language_id; 
         $sub_category->update();
         return redirect()->route('admin_sub_category_show')->with('success','Data is updated successfully!');
     }

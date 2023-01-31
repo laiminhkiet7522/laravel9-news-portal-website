@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('photo');
             $table->text('caption');    
+            $table->integer('language_id');
             $table->timestamps();
         });
     }

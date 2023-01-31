@@ -1,3 +1,15 @@
+@if (!session()->get('session_short_name'))
+    @php
+        $current_short_name = $global_short_name;
+    @endphp
+@else
+    @php
+        $current_short_name = session()->get('session_short_name');
+    @endphp
+@endif
+@php
+    $current_language_id = \App\Models\Language::where('short_name', $current_short_name)->first()->id;
+@endphp
 <div class="sidebar">
 
     <div class="widget">
@@ -18,11 +30,27 @@
         </div>
         <div class="tag">
             @php
-                $all_tag = \App\Models\Tag::select('tag_name')
+                $all_tags = \App\Models\Tag::select('tag_name')
                     ->distinct()
                     ->get();
             @endphp
-            @foreach ($all_tag as $item)
+            @foreach ($all_tags as $item)
+                @php
+                    $count = 0;
+                    $all_data = \App\Models\Tag::where('tag_name', $item->tag_name)->get();
+                    foreach ($all_data as $row) {
+                        $temp = \App\Models\Post::where('id', $row->post_id)
+                            ->where('language_id', $current_language_id)
+                            ->count();
+                        if ($temp > 0) {
+                            $count = 1;
+                            break;
+                        }
+                    }
+                    if ($count == 0) {
+                        continue;
+                    }
+                @endphp
                 <div class="tag-item">
                     <a href="{{ route('tag_posts_show', $item->tag_name) }}"><span
                             class="badge bg-secondary">{{ $item->tag_name }}</span></a>
@@ -56,7 +84,8 @@
                         @php
                             $temp_arr = explode('-', $archive_array[$i]);
                         @endphp
-                        <option value="{{ $temp_arr[0] . '-' . $temp_arr[2] }}">{{ $temp_arr[1] }}, {{ $temp_arr[2] }}
+                        <option value="{{ $temp_arr[0] . '-' . $temp_arr[2] }}">{{ $temp_arr[1] }},
+                            {{ $temp_arr[2] }}
                         </option>
                     @endfor
                 </select>
@@ -65,7 +94,10 @@
     </div>
 
     <div class="widget">
-        @foreach ($global_live_channel_data as $item)
+        @php
+            $live_channel_data = \App\Models\LiveChannel::where('language_id', $current_language_id)->get();
+        @endphp
+        @foreach ($live_channel_data as $item)
             <div class="live-channel">
                 <div class="live-channel-heading">
                     <h2>{{ $item->heading }}</h2>
@@ -100,8 +132,13 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                    @foreach ($global_recent_news_data as $item)
+                    @php
+                        $recent_news_data = \App\Models\Post::with('rSubCategory')
+                            ->where('language_id', $current_language_id)
+                            ->orderBy('id', 'desc')
+                            ->get();
+                    @endphp
+                    @foreach ($recent_news_data as $item)
                         @if ($loop->iteration > 5)
                         @break
                     @endif
@@ -141,7 +178,14 @@
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
-                @foreach ($global_popular_news_data as $item)
+                @php
+                    
+                    $popular_news_data = \App\Models\Post::with('rSubCategory')
+                        ->orderBy('visitors', 'desc')
+                        ->where('language_id', $current_language_id)
+                        ->get();
+                @endphp
+                @foreach ($popular_news_data as $item)
                     @if ($loop->iteration > 5)
                     @break
                 @endif
@@ -191,29 +235,32 @@
 </div>
 <div class="poll">
     <div class="question">
-        {{ $global_online_poll_data->question }}
+        @php
+            $online_poll_data = \App\Models\OnlinePoll::orderBy('id','desc')->where('language_id',$current_language_id)->first();
+        @endphp
+        {{ $online_poll_data->question }}
     </div>
     @php
-        $total_vote = $global_online_poll_data->yes_vote + $global_online_poll_data->no_vote;
-        if ($global_online_poll_data->yes_vote == 0) {
+        $total_vote = $online_poll_data->yes_vote + $online_poll_data->no_vote;
+        if ($online_poll_data->yes_vote == 0) {
             $total_yes_percentage = 0;
         } else {
-            $total_yes_percentage = ($global_online_poll_data->yes_vote * 100) / $total_vote;
+            $total_yes_percentage = ($online_poll_data->yes_vote * 100) / $total_vote;
             $total_yes_percentage = ceil($total_yes_percentage);
         }
-        if ($global_online_poll_data->no_vote == 0) {
+        if ($online_poll_data->no_vote == 0) {
             $total_no_percentage = 0;
         } else {
-            $total_no_percentage = ($global_online_poll_data->no_vote * 100) / $total_vote;
+            $total_no_percentage = ($online_poll_data->no_vote * 100) / $total_vote;
             $total_no_percentage = ceil($total_no_percentage);
         }
     @endphp
-    @if (session()->get('current_poll_id') == $global_online_poll_data->id)
+    @if (session()->get('current_poll_id') == $online_poll_data->id)
         <div class="poll-result">
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
-                        <td style="width: 100px">Yes ({{ $global_online_poll_data->yes_vote }})</td>
+                        <td style="width: 100px">Yes ({{ $online_poll_data->yes_vote }})</td>
                         <td>
                             <div class="progress">
                                 <div class="progress-bar bg-success" role="progressbar"
@@ -224,7 +271,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>No ({{ $global_online_poll_data->no_vote }})</td>
+                        <td>No ({{ $online_poll_data->no_vote }})</td>
                         <td>
                             <div class="progress">
                                 <div class="progress-bar bg-danger" role="progressbar"
@@ -240,11 +287,11 @@
             </div>
         </div>
     @endif
-    @if (session()->get('current_poll_id') != $global_online_poll_data->id)
+    @if (session()->get('current_poll_id') != $online_poll_data->id)
         <div class="answer-option">
             <form action="{{ route('poll_submit') }}" method="post">
                 @csrf
-                <input type="hidden" name="id" value="{{ $global_online_poll_data->id }}">
+                <input type="hidden" name="id" value="{{ $online_poll_data->id }}">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="vote" id="poll_id_1"
                         value="Yes" checked>
@@ -256,7 +303,8 @@
                     <label class="form-check-label" for="poll_id_2">{{ NO }}</label>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" style="margin-top: 0;">{{ SUBMIT }}</button>
+                    <button type="submit" class="btn btn-primary"
+                        style="margin-top: 0;">{{ SUBMIT }}</button>
                     <a href="{{ route('poll_previous') }}" class="btn btn-primary old"
                         style="margin-top: 0;">{{ OLD_RESULT }}</a>
                 </div>

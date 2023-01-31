@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+    @extends('admin.layout.app')
 
 @section('heading', 'Categories')
 @section('button')
@@ -19,6 +19,7 @@
                                         <th>Category Name</th>
                                         <th>Show on menu</th>
                                         <th>Order</th>
+                                        <th>Language</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -29,6 +30,7 @@
                                             <td>{{ $row->category_name }}</td>
                                             <td>{{ $row->show_on_menu }}</td>
                                             <td>{{ $row->category_order }}</td>
+                                            <td>{{ $row->rLanguage->name }}</td>
                                             <td class="pt_10 pb_10">
                                                 <a href="{{ route('admin_category_edit', $row->id) }}" class="btn btn-primary">Edit</a>
                                                 <a href="{{ route('admin_category_delete', $row->id) }}" class="btn btn-danger"

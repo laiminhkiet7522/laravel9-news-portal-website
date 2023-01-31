@@ -17,7 +17,7 @@ class AdminPostController extends Controller
 {
     public function show()
     {
-        $posts = Post::with('rSubCategory.rCategory')->get();
+        $posts = Post::with('rSubCategory.rCategory','rLanguage')->get();
         return view('admin.post_show', compact('posts'));
     }
     public function create()
@@ -51,6 +51,7 @@ class AdminPostController extends Controller
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
         $post->post_photo = $final_name;
+        $post->language_id = $request->language_id;
         $post->save();
 
         if ($request->tags != '') {
@@ -128,6 +129,7 @@ class AdminPostController extends Controller
         $post->post_detail = $request->post_detail;
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
+        $post->language_id = $request->language_id;
         $post->update();
 
         if ($request->tags != '') {

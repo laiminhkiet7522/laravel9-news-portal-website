@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('heading');
             $table->text('video_id');
+            $table->text('language_id');
             $table->timestamps();
         });
     }

@@ -17,6 +17,15 @@
                                 <label>Question *</label>
                                 <textarea name="question" class="form-control" cols="30" rows="10" style="height: 150px;">{{ $online_poll_data->question }}</textarea>
                             </div>
+                            <div class="form-group mb-3">
+                                <label>Select Language</label>
+                                <select name="language_id" class="form-control">
+                                    @foreach ($global_language_data as $row)
+                                        <option value="{{ $row->id }}"
+                                            @if ($row->id == $online_poll_data->language_id) selected @endif>{{ $row->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

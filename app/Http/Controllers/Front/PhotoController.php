@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Photo;
+use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Helper\Helpers;
 class PhotoController extends Controller
 {
     public function index(){
         Helpers::read_json();
-        $photos = Photo::paginate(4);
+        if (!session()->get('session_short_name')) {
+            $current_short_name = Language::where('is_default', 'Yes')->first()->short_name;
+        } else {
+            $current_short_name = session()->get('session_short_name');
+        }
+
+        $current_language_id = Language::where('short_name', $current_short_name)->first()->id;
+        $photos = Photo::where('language_id',$current_language_id)->paginate(4);
         return view('front.photo_gallery',compact('photos'));
     }
 }

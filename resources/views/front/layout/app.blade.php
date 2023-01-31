@@ -130,21 +130,25 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="right">
-                        @if ($global_page_data->faq_status == 'Show')
-                            <li class="menu"><a href="{{ route('faq') }}">{{ $global_page_data->faq_title }}</a>
+                        @php
+                            $current_lang_id = \App\Models\Language::where('short_name',$current_short_name)->first()->id;
+                            $page_data = \App\Models\Page::where('language_id', $current_lang_id)->first();
+                        @endphp
+                        @if ($page_data->faq_status == 'Show')
+                            <li class="menu"><a href="{{ route('faq') }}">{{ $page_data->faq_title }}</a>
                             </li>
                         @endif
-                        @if ($global_page_data->about_status == 'Show')
-                            <li class="menu"><a href="{{ route('about') }}">{{ $global_page_data->about_title }}</a>
+                        @if ($page_data->about_status == 'Show')
+                            <li class="menu"><a href="{{ route('about') }}">{{ $page_data->about_title }}</a>
                             </li>
                         @endif
-                        @if ($global_page_data->contact_status == 'Show')
+                        @if ($page_data->contact_status == 'Show')
                             <li class="menu"><a
-                                    href="{{ route('contact') }}">{{ $global_page_data->contact_title }}</a></li>
+                                    href="{{ route('contact') }}">{{ $page_data->contact_title }}</a></li>
                         @endif
 
-                        @if ($global_page_data->login_status == 'Show')
-                            <li class="menu"><a href="{{ route('login') }}">{{ $global_page_data->login_title }}</a>
+                        @if ($page_data->login_status == 'Show')
+                            <li class="menu"><a href="{{ route('login') }}">{{ $page_data->login_title }}</a>
                             </li>
                         @endif
 
@@ -208,7 +212,7 @@
                     <div class="item">
                         <h2 class="heading">{{ FOOTER_COL_1_HEADING }}</h2>
                         <p>
-                           {{ FOOTER_COL_1_TEXT }}
+                            {{ FOOTER_COL_1_TEXT }}
                         </p>
                     </div>
                 </div>
@@ -218,19 +222,19 @@
                         <ul class="useful-links">
                             <li><a href="{{ route('home') }}">{{ HOME }}</a></li>
 
-                            @if ($global_page_data->terms_status == 'Show')
-                                <li><a href="{{ route('terms') }}">{{ $global_page_data->terms_title }}</a></li>
+                            @if ($page_data->terms_status == 'Show')
+                                <li><a href="{{ route('terms') }}">{{ $page_data->terms_title }}</a></li>
                             @endif
 
-                            @if ($global_page_data->privacy_status == 'Show')
-                                <li><a href="{{ route('privacy') }}">{{ $global_page_data->privacy_title }}</a></li>
+                            @if ($page_data->privacy_status == 'Show')
+                                <li><a href="{{ route('privacy') }}">{{ $page_data->privacy_title }}</a></li>
                             @endif
-                            @if ($global_page_data->disclaimer_status == 'Show')
-                                <li><a href="{{ route('disclaimer') }}">{{ $global_page_data->disclaimer_title }}</a>
+                            @if ($page_data->disclaimer_status == 'Show')
+                                <li><a href="{{ route('disclaimer') }}">{{ $page_data->disclaimer_title }}</a>
                                 </li>
                             @endif
-                            @if ($global_page_data->contact_status == 'Show')
-                                <li><a href="{{ route('contact') }}">{{ $global_page_data->contact_title }}</a>
+                            @if ($page_data->contact_status == 'Show')
+                                <li><a href="{{ route('contact') }}">{{ $page_data->contact_title }}</a>
                                 </li>
                             @endif
                         </ul>
@@ -282,7 +286,8 @@
                         <form action="{{ route('subscribe') }}" method="post" class="form_subscribe_ajax">
                             @csrf
                             <div class="form-group">
-                                <input type="text" name="email" class="form-control" placeholder="{{ EMAIL_ADDRESS }}">
+                                <input type="text" name="email" class="form-control"
+                                    placeholder="{{ EMAIL_ADDRESS }}">
                                 <span class="text-danger error-text email_error"></span>
                             </div>
                             <div class="form-group">

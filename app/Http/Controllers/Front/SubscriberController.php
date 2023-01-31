@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\Websitemail;
+use App\Helper\Helpers;
 use Illuminate\Support\Facades\Mail;
 class SubscriberController extends Controller
 {
     public function index(Request $request){
+        Helpers::read_json();
         $validator = Validator::make($request->all(), [
             'email' => 'required|email'
+        ],[
+            'email.required'=>ERROR_EMAIL_REQUIRED,
+            'email.email'=>ERROR_EMAIL_VALID,
         ]);
         if (!$validator->passes()) {
             return response()->json(['code' => 0, 'error_message' => $validator->errors()->toArray()]);
@@ -31,16 +36,17 @@ class SubscriberController extends Controller
             $message .= $verification_link;
             $message .= '</a>';
             Mail::to($request->email)->send(new Websitemail($subject, $message));
-            return response()->json(['code' => 1, 'success_message' => 'Please check your email address to verify as subscriber!']);
+            return response()->json(['code' => 1, 'success_message' => SUCCESS_SUBSCRIBER]);
         }
     }
     public function verify($token, $email){
+        Helpers::read_json();
         $subscriber_data = Subscriber::where('token',$token)->where('email',$email)->first();
         if($subscriber_data){
             $subscriber_data->token = '';
             $subscriber_data->status = 'Active';
             $subscriber_data->update();
-            return redirect()->back()->with('success','You are successfully verified as a subscriber to this system');
+            return redirect()->back()->with('success',SUCCESS_SUBSCRIBER_CONFIRM);
         }else{
             return redirect()->route('home');
         }

@@ -18,6 +18,14 @@
                                 <textarea name="question" class="form-control" cols="30" rows="10" style="height: 150px;"></textarea>
                             </div>
                         </div>
+                        <div class="form-group mb-3">
+                            <label>Select Language</label>
+                            <select name="language_id" class="form-control">
+                                @foreach ($global_language_data as $row)
+                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('about_detail');
             $table->text('about_status');
             $table->text('faq_title');
-            $table->text('faq_detail');
+            $table->text('faq_detail')->nullable();
             $table->text('faq_status');
             $table->text('contact_title');
             $table->text('contact_detail');
@@ -36,6 +36,7 @@ return new class extends Migration
             $table->text('disclaimer_status');
             $table->text('login_title');
             $table->text('login_status');
+            $table->integer('language_id');
             $table->timestamps();
         });
     }

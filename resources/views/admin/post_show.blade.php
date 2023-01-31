@@ -22,6 +22,7 @@
                                         <th>Category</th>
                                         <th>Author</th>
                                         <th>Admin</th>
+                                        <th>Language</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -44,6 +45,7 @@
                                                     {{ Auth::guard('admin')->user()->name }}
                                                 @endif
                                             </td>
+                                            <td>{{ $row->rLanguage->name }}</td>
                                             <td class="pt_10 pb_10">
                                                 @if ($row->admin_id != 0)
                                                     <a href="{{ route('admin_post_edit', $row->id) }}"

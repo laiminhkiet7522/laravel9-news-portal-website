@@ -9,7 +9,7 @@ use App\Models\OnlinePoll;
 class AdminOnlinePollController extends Controller
 {
     public function show(){
-        $online_poll_data = OnlinePoll::orderBy('id','desc')->get();
+        $online_poll_data = OnlinePoll::with('rLanguage')->orderBy('id','desc')->get();
         return view('admin.online_poll_show',compact('online_poll_data'));
     }
     public function create(){
@@ -24,6 +24,7 @@ class AdminOnlinePollController extends Controller
         $online_poll->question = $request->question;
         $online_poll->yes_vote = 0;
         $online_poll->no_vote = 0;
+        $online_poll->language_id = $request->language_id;
         $online_poll->save();
         return redirect()->route('admin_online_poll_show')->with('success','Data is added successfully!');
     }
@@ -38,6 +39,7 @@ class AdminOnlinePollController extends Controller
         ]);
         $online_poll_data = OnlinePoll::where('id',$id)->first();
         $online_poll_data->question = $request->question;
+        $online_poll_data->language_id = $request->language_id;
         $online_poll_data->update();
         return redirect()->route('admin_online_poll_show')->with('success', 'Data is updated successfully!');
     }
