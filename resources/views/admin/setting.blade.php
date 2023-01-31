@@ -14,28 +14,28 @@
                                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                         aria-orientation="vertical">
-                                        <a class="nav-link active" id="v-1-tab" data-toggle="pill" href="#v-1"
-                                            role="tab" aria-controls="v-1" aria-selected="true">
+                                        <a class="nav-link active" id="v-1-tab" data-bs-toggle="pill"type="button"
+                                            data-bs-target="#v-1" role="tab" aria-controls="v-1" aria-selected="true">
                                             Home Page
                                         </a>
-                                        <a class="nav-link" id="v-2-tab" data-toggle="pill" href="#v-2" role="tab"
-                                            aria-controls="v-2" aria-selected="false">
+                                        <a class="nav-link" id="v-2-tab" data-bs-toggle="pill"type="button"
+                                            data-bs-target="#v-2" role="tab" aria-controls="v-2" aria-selected="false">
                                             Logo and Favicon
                                         </a>
-                                        <a class="nav-link" id="v-3-tab" data-toggle="pill" href="#v-3" role="tab"
-                                            aria-controls="v-3" aria-selected="false">
+                                        <a class="nav-link" id="v-3-tab" data-bs-toggle="pill"type="button"
+                                            data-bs-target="#v-3" role="tab" aria-controls="v-3" aria-selected="false">
                                             Top Bar
                                         </a>
-                                        <a class="nav-link" id="v-4-tab" data-toggle="pill" href="#v-4" role="tab"
-                                            aria-controls="v-4" aria-selected="false">
+                                        <a class="nav-link" id="v-4-tab" data-bs-toggle="pill"type="button"
+                                            data-bs-target="#v-4" role="tab" aria-controls="v-4" aria-selected="false">
                                             Theme Color
                                         </a>
-                                        <a class="nav-link" id="v-5-tab" data-toggle="pill" href="#v-5" role="tab"
-                                            aria-controls="v-5" aria-selected="false">
+                                        <a class="nav-link" id="v-5-tab" data-bs-toggle="pill"type="button"
+                                            data-bs-target="#v-5" role="tab" aria-controls="v-5" aria-selected="false">
                                             Google Analytic
                                         </a>
-                                        <a class="nav-link" id="v-6-tab" data-toggle="pill" href="#v-6" role="tab"
-                                            aria-controls="v-6" aria-selected="false">
+                                        <a class="nav-link" id="v-6-tab" data-bs-toggle="pill"type="button"
+                                            data-bs-target="#v-6" role="tab" aria-controls="v-6" aria-selected="false">
                                             Disqus Comment
                                         </a>
                                     </div>

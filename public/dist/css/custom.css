@@ -410,3 +410,16 @@ hr.invoice-above-table {
 .was-validated{
     border-color: #dc3545!important;
 }
+.btn-block{
+    width: 100%;
+}
+.w-100-p{
+    width: 100%!important;
+}
+.rounded-circle{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 3px;
+}

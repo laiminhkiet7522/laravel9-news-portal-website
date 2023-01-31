@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Websitemail;
 class AuthorPostController extends Controller
 {
-    public function show()
+    public function show()  
     {
-        $posts = Post::with('rSubCategory.rCategory')->where('author_id', Auth::guard('author')->user()->id)->get();
+        $posts = Post::with('rSubCategory.rCategory','rLanguage')->where('author_id', Auth::guard('author')->user()->id)->get();
         return view('author.post_show', compact('posts'));
     }
     public function create()
@@ -48,6 +48,7 @@ class AuthorPostController extends Controller
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
         $post->post_photo = $final_name;
+        $post->language_id = $request->language_id;
         $post->save();
         if ($request->tags != '') {
             $tag_array_new = [];
@@ -114,6 +115,7 @@ class AuthorPostController extends Controller
         $post->post_detail = $request->post_detail; 
         $post->is_share = $request->is_share;
         $post->is_comment = $request->is_comment;
+        $post->language_id = $request->language_id;
         $post->update();
 
         if ($request->tags != '') {

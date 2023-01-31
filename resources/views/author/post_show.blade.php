@@ -21,6 +21,7 @@
                                         <th>Sub Category</th>
                                         <th>Category</th>
                                         <th>Author</th>
+                                        <th>Language</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -37,7 +38,8 @@
                                                 @if ($row->author_id != 0)
                                                     {{ Auth::guard('author')->user()->name }}
                                                 @endif
-                                            </td>   
+                                            </td>
+                                            <td>{{ $row->rLanguage->name }}</td>   
                                             <td class="pt_10 pb_10">
                                                 <a href="{{ route('author_post_edit', $row->id) }}"
                                                     class="btn btn-primary">Edit</a>

@@ -10,13 +10,16 @@
         <ul class="sidebar-menu">
 
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_home') }}"><i class="fas fa-home"></i>
+                    href="{{ route('admin_home') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Dashboard"><i class="fas fa-home"></i>
                     <span>Dashboard</span></a></li>
             <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_setting') }}"><i class="fas fa-cog"></i>
+                    href="{{ route('admin_setting') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Setting"><i class="fas fa-cog"></i>
                     <span>Setting</span></a></li>
             <li class="{{ Request::is('admin/author/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_author_show') }}"><i class="fas fa-user-edit"></i>
+                    href="{{ route('admin_author_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Author List"><i class="fas fa-user-edit"></i>
                     <span>Author List</span></a></li>
             </li>
 
@@ -51,15 +54,16 @@
                 </ul>
             </li>
             <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_photo_show') }}"><i class="fas fa-camera"></i>
+                    href="{{ route('admin_photo_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Photo Gallery"><i class="fas fa-camera"></i>
                     <span>Photo Gallery</span></a></li>
             <li class="{{ Request::is('admin/video/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_video_show') }}"><i class="fas fa-video"></i>
+                    href="{{ route('admin_video_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Video Gallery"><i class="fas fa-video"></i>
                     <span>Video Gallery</span></a></li>
 
             <li class="nav-item dropdown {{ Request::is('admin/page/*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i
-                        class="fas fa-copy"></i><span>Pages</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-copy"></i><span>Pages</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/page/about') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin_page_about') }}"><i class="fas fa-angle-right"></i>
@@ -85,15 +89,18 @@
                 </ul>
             </li>
             <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_faq_show') }}"><i class="fas fa-question-circle"></i>
+                    href="{{ route('admin_faq_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="FAQ Section"><i class="fas fa-question-circle"></i>
                     <span>FAQ Section</span></a></li>
             <li class="{{ Request::is('admin/language/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_language_show') }}"><i class="fas fa-language"></i>
+                    href="{{ route('admin_language_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Languages"><i class="fas fa-language"></i>
                     <span>Languages</span></a></li>
 
 
             <li class="nav-item dropdown {{ Request::is('admin/subscriber/*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i><span>Subscribers</span></a>
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-users"></i><span>Subscribers</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/subscriber/all') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin_subscribers') }}"><i class="fas fa-angle-right"></i>
@@ -105,13 +112,16 @@
             </li>
 
             <li class="{{ Request::is('admin/live-channel/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_live_channel_show') }}"><i class="fab fa-google-drive"></i>
+                    href="{{ route('admin_live_channel_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Live Channel"><i class="fab fa-google-drive"></i>
                     <span>Live Channel</span></a></li>
             <li class="{{ Request::is('admin/online-poll/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_online_poll_show') }}"><i class="fas fa-vote-yea"></i>
+                    href="{{ route('admin_online_poll_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Online Poll"><i class="fas fa-vote-yea"></i>
                     <span>Online Poll</span></a></li>
             <li class="{{ Request::is('admin/social-item/*') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ route('admin_social_item_show') }}"><i class="fas fa-share-alt"></i>
+                    href="{{ route('admin_social_item_show') }}" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Social Items"><i class="fas fa-share-alt"></i>
                     <span>Social Items</span></a></li>
         </ul>
     </aside>
