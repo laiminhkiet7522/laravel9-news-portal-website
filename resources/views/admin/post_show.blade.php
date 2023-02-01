@@ -1,6 +1,7 @@
 @extends('admin.layout.app')
 
 @section('heading', 'Posts')
+
 @section('button')
     <a href="{{ route('admin_post_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add</a>
 @endsection
@@ -30,8 +31,10 @@
                                     @foreach ($posts as $row)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td><img src="{{ asset('uploads/' . $row->post_photo) }}" alt=""
-                                                    style="width: 200px"></td>
+                                            <td>
+                                                <img src="{{ asset('uploads/' . $row->post_photo) }}" alt=""
+                                                    style="width:200px;">
+                                            </td>
                                             <td>{{ $row->post_title }}</td>
                                             <td>{{ $row->rSubCategory->sub_category_name }}</td>
                                             <td>{{ $row->rSubCategory->rCategory->category_name }}</td>
